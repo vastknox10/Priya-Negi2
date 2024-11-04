@@ -24,9 +24,17 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
      return api.sendMessage("", threadID);
    };
   
-   mess = "{name}"
-  
-  if (event.body.indexOf("joke") == 0 || (event.body.indexOf("Joke") == 0)) {
+      mess = "{name}"
+
+  if (event.body.includes("JOKE") == 1 ||
+   (event.body.includes("Joke") == 1 ||
+   (event.body.includes("joke") == 1 ||
+   (event.body.includes("#JOKE") == 1 ||
+   (event.body.includes("#joke") == 1 ||
+   (event.body.includes("#Joke") == 1 ||
+   (event.body.includes("funny") == 1 ||
+   (event.body.includes("FUNNY") == 1 ||
+   (event.body.includes("Funny") == 1 ))))))))) {
     var msg = {
       body: `${name} \n____________________________________\n\n\n${rand}`
     }
