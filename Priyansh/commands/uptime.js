@@ -1,19 +1,23 @@
-const os = require("os");
-const fs = require("fs-extra");
+const fetch = require('node-fetch');
+const os = require('os');
+const fs = require('fs');
+const language = process.env.REPL_LANGUAGE;
+const platform = os.platform();
+const architecture = os.arch();
+const cpuModel = os.cpus()[0].model;
+const uptime = os.uptime();
+const nodejs = process.version;
+global.client.timeStart = new Date().getTime();
 
-const startTime = new Date(); // Moved outside onStart
-
-module.exports = {
-  config: {
-    name: "uptime",
-    version: "1.0.0",
-    hasPermssion: 2,
-    credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
-    description: "test",
-    commandCategory: "box",
-    usages: "test",
-    dependencies: {},
-    cooldowns: 5
+module.exports.config = {
+  name: "uptime",
+  version: "1.0.1",
+  hasPermssion: 0,
+  credits: "AADI-BABU",
+  description: "कोई प्रीफिक्स नहीं",
+  commandCategory: "बिना आदेश के",
+  usages: "बॉट के ऑनलाइन समय को देखें",
+  cooldowns: 5
   },
 
   run: async function ({ api, event, args }) {
