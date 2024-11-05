@@ -1,28 +1,26 @@
 const fs = require("fs");
 module.exports.config = {
-	name: "THANK YOU",
-    version: "1.1.1",
-	hasPermssion: 0,
-	credits: "AADI BABU", 
-	description: "THIS BOT IS AADI SHARMA",
-	commandCategory: "no prefix",
+        name: "WELCOMe",
+    version: "1.0.1",
+        hasPermssion: 0,
+        credits: "AADI BABU", 
+        description: "hihihihi",
+        commandCategory: "no prefix",
+        usages: "Welcome",
     cooldowns: 5, 
 };
 
 module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
-	var { threadID, messageID } = event;
-	let react = event.body.toLowerCase();
-	if(react.includes("welcome") ||
-     react.includes("Welcome") || react.includes("WELCOME") || react.includes("स्वागत") ||
-react.includes("WELCOME") ||
-react.includes("Walcome")) {
-		var msg = {
-				body: `🙋  🅃🄷🄰🄽🄺  🅈🄾🅄  🙋`,
-			}
-			api.sendMessage(msg, threadID, messageID);
-    api.setMessageReaction("🤩", event.messageID, (err) => {}, true)
-		}
-	}
-	module.exports.run = function({ api, event, client, __GLOBAL }) {
+        var { threadID, messageID } = event;
+        if (event.body.indexOf("welcome")==0 || event.body.indexOf("WELCOME")==0 || event.body.indexOf("Welcome")==0 || event.body.indexOf("स्वागत")==0) {
+                var msg = {
+                                body: "=𝐎𝐰𝐧𝐞𝐫 ➻  𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 \n__________________________________\n\n🙋  🅃🄷🄰🄽🄺  🅈🄾🅄  🙋\n__________________________________ ",
+                                attachment: fs.createReadStream(__dirname + `/noprefix/d08cfbbacd25670c448ac105504c840c.gif`)
+                        }
+                        api.sendMessage(msg, threadID, messageID);
+    api.setMessageReaction("🥂", event.messageID, (err) => {}, true)
+                }
+        }
+        module.exports.run = function({ api, event, client, __GLOBAL }) {
 
-  }
+        }
