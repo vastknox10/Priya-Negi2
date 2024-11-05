@@ -45,7 +45,7 @@ async function makeImage({ one, two }) {
  
     let circleOne = await jimp.read(await circle(avatarOne));
     let circleTwo = await jimp.read(await circle(avatarTwo));
-    batgiam_img.composite(circleOne.resize(225, 230), 80, 140).composite(circleTwo.resize(170, 170), 445, 120);
+    batgiam_img.composite(circleOne.resize(220, 220), 80, 140).composite(circleTwo.resize(170, 170), 445, 120);
  
     let raw = await batgiam_img.getBufferAsync("image/jpeg");
  
