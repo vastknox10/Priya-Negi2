@@ -46,7 +46,7 @@ module.exports = function ({ api, models }) {
                         return `${count++}. ${item.name} with ${item.count} message`;
                     }).join('\n');
                     api.sendMessage(checkttBody, checkttFile.replace('.json', ''), (err) => err ? console.log(err) : '');
-    
+
                     checktt.day.forEach(e => {
                         e.count = 0;
                     });
@@ -275,7 +275,7 @@ module.exports = function ({ api, models }) {
             handleCommand({ event });
             handleReply({ event });
             handleCommandEvent({ event });
-    
+
             break;
           case "event":
             handleEvent({ event });
