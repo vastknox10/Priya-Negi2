@@ -1,10 +1,10 @@
 const fs = require("fs");
 module.exports.config = {
-        name: "KISS-YOU",
+        name: "khana-khao",
     version: "1.1.1",
         hasPermssion: 0,
         credits: "AADI BABU",
-        description: "THIS BOT IS MR AADI SHARMA",
+        description: "THIS BOT IS MR AADI BABU",
         commandCategory: "no prefix",
     cooldowns: 5, 
 };
@@ -12,10 +12,10 @@ module.exports.config = {
 module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
         var { threadID, messageID } = event;
         let react = event.body.toLowerCase();
-        if(react.includes("kiss") ||
-     react.includes("kiss you") || react.includes("umma") || react.includes("KISS DO") ||
-react.includes("kiss me") ||
-react.includes("KISS YOU")) {
+        if(react.includes("Dinner") ||
+     react.includes("dinner") || react.includes("DINNER") || react.includes("KHANA") ||
+react.includes("Khana") ||
+react.includes("khana")) {
                 var msg = {
                                 body: `=𝐎𝐰𝐧𝐞𝐫 ➻  𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 \n__________________________________\n\n𝐋𝐨 𝐁𝐚𝐁𝐲\n__________________________________`,attachment: fs.createReadStream(__dirname + `/noprefix/received_472683075271350.mp4`)
                         }
