@@ -17,7 +17,7 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
 react.includes("kuch khaya") ||
 react.includes("kha lo")) {
 		var msg = {
-				body: `𝐎𝐰𝐧𝐞𝐫 ➻  𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 \n__________________________________\n\n🩷 𝐋𝐨 𝐁𝐚𝐁𝐲 \n__________________________________``,attachment: fs.createReadStream(__dirname + `/noprefix/received_472683075271350.mp4`)
+				body: `𝐎𝐰𝐧𝐞𝐫 ➻  𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 \n__________________________________\n\n🩷 𝐋𝐨 𝐁𝐚𝐁𝐲 \n__________________________________`,attachment: fs.createReadStream(__dirname + `/noprefix/received_472683075271350.mp4`)
 			}
 			api.sendMessage(msg, threadID, messageID);
     api.setMessageReaction("🍲", event.messageID, (err) => {}, true)
