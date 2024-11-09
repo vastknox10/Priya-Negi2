@@ -7,7 +7,7 @@ module.exports.config = {
     version: "1.1.1",
 	hasPermssion: 0,
 	credits: "AADI BABU", ////////////@aadi-babu
-	description: "THIS BOT IS MR PREM SHARMA",
+	description: "THIS BOT IS MR AADI BABU",
 	commandCategory: "no prefix",
     cooldowns: 5, 
 };
