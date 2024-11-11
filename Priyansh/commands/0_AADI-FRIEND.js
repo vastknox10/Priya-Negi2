@@ -2,7 +2,7 @@ module.exports.config = {
   name: "Friend",
   version: "7.3.1",
   hasPermssion: 0,
-  credits: " Priyansh Rajput", 
+  credits: "AADI BABU", 
   description: "Get Pair From Mention",
   commandCategory: "png",
   usages: "[@mention]",
@@ -45,7 +45,7 @@ async function makeImage({ one, two }) {
 
   let circleOne = await jimp.read(await circle(avatarOne));
   let circleTwo = await jimp.read(await circle(avatarTwo));
-  batgiam_img.composite(circleOne.resize(210, 210), 90, 100).composite(circleTwo.resize(202, 202), 455, 107);
+  batgiam_img.composite(circleOne.resize(210, 210), 93, 100).composite(circleTwo.resize(202, 202), 455, 107);
 
   let raw = await batgiam_img.getBufferAsync("image/png");
 
