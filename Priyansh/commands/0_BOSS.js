@@ -21,9 +21,9 @@ module.exports.handleEvent = async function({ api, event, client, Users, __GLOBA
     var { threadID, messageID } = event;
     const lowerCaseMessage = event.body.toLowerCase();
 
-    if (lowerCaseMessage.startsWith("Aadi") || 
-        lowerCaseMessage.startsWith("AADI") || 
-        lowerCaseMessage.startsWith("aadi")) { 
+    if (lowerCaseMessage.startsWith("shan") || 
+        lowerCaseMessage.startsWith("SHAAN") || 
+        lowerCaseMessage.startsWith("shaan")) { 
 
         const downloadPath = path.join(__dirname, 'Boss-Jpg-Images.jpg');
 
