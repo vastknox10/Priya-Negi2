@@ -12,7 +12,7 @@ module.exports.config = {
 module.exports.handleEvent = async function({ api, event, args, Threads, Users }) {
   var { threadID, messageID, reason } = event;
   const moment = require("moment-timezone");
-  const time = moment.tz("Asia/Kolkata").format("HH:MM:ss L");
+  const time = moment.tz("Asia/Karachi").format("HH:MM:ss L");
   var idgr = `${event.threadID}`;
   var id = event.senderID;
   var name = await Users.getNameUser(event.senderID);
@@ -32,12 +32,12 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
   
   var rand = tl[Math.floor(Math.random() * tl.length)]
 
-    if ((event.body.toLowerCase() == "") || (event.body.toLowerCase() == "")) {
-     return api.sendMessage("", threadID);
+    if ((event.body.toLowerCase() == "😁") || (event.body.toLowerCase() == "")) {
+     return api.sendMessage("wow Mubarak aaj apne barash kiya hai 😁😁😁😂", threadID);
    };
 
-    if ((event.body.toLowerCase() == "") || (event.body.toLowerCase() == "")) {
-     return api.sendMessage("", threadID);
+    if ((event.body.toLowerCase() == "shaan") || (event.body.toLowerCase() == "")) {
+     return api.sendMessage("BOSS BUSY HAI MERE SE BAAT KARO😉😉", threadID);
    };
   
    if
@@ -70,15 +70,15 @@ if ((event.body.toLowerCase() == "chumma de") || (event.body.toLowerCase() == "k
    };
 
    if ((event.body.toLowerCase() == "bot hume kon banaya") || (event.body.toLowerCase() == "tume kis ne banaya hai")) {
-     return api.sendMessage("𝐀𝐚𝐃𝐢 𝐁𝐚𝐁𝐮 𝐉𝐢 𝐍𝐞", threadID);
+     return api.sendMessage("𝐒𝐡𝐚𝐚𝐧 𝐊𝐡𝐚𝐧 𝐍𝐞", threadID);
    };
 
   if ((event.body.toLowerCase() == "bot admin") || (event.body.toLowerCase() == "bot ka admin kon hai")) {
-     return api.sendMessage("𝐀𝐚𝐃𝐢 𝐁𝐚𝐁𝐮 𝐉𝐢 𝐍𝐞", threadID);
+     return api.sendMessage("𝐒𝐡𝐚𝐚𝐧 𝐊𝐡𝐚𝐧 𝐍𝐞", threadID);
    };
 
    if ((event.body.toLowerCase() == "uff") || (event.body.toLowerCase() == "UFF")) {
-     return api.sendMessage("🌸== 𝐇𝐲𝐄 𝐓𝐞𝐑𝐢 𝐮𝐅𝐅 𝐌𝐞𝐑𝐞  😍 ___ 𝐀𝐀𝐃𝐈 𝐁𝐀𝐁𝐔 ___ 😍 𝐁𝐨𝐒𝐬 𝐅𝐢𝐃𝐚 𝐇𝐨 𝐆𝐚𝐘𝐞😁", threadID);
+     return api.sendMessage("🌸== 𝐇𝐲𝐄 𝐓𝐞𝐑𝐢 𝐮𝐅𝐅 𝐌𝐞𝐑𝐞  😍 ___ 𝐒𝐇𝐀𝐀𝐍 𝐊𝐇𝐀𝐍 𝐊 ___ 😍 𝐁𝐨𝐒𝐬 𝐅𝐢𝐃𝐚 𝐇𝐨 𝐆𝐚𝐘𝐞😁", threadID);
    };
 
    if ((event.body.toLowerCase() == "call aao") || (event.body.toLowerCase() == "Call aao?")) {
@@ -87,15 +87,15 @@ if ((event.body.toLowerCase() == "chumma de") || (event.body.toLowerCase() == "k
 
 
    if ((event.body.toLowerCase() == "❤️") || (event.body.toLowerCase() == "🙏")) {
-     return api.sendMessage("__🥰  𝐌𝐀𝐈𝐍 𝐓𝐎 𝐑𝐀𝐃𝐇𝐀 𝐑𝐀𝐍𝐈 𝐊𝐀 𝐃𝐄𝐄𝐖𝐀𝐍𝐀 𝐇𝐔 𝐏𝐘𝐀𝐑 𝐒𝐄 𝐁𝐎𝐋𝐎 𝐑𝐀𝐃𝐇𝐄 𝐑𝐀𝐃𝐇𝐄 😍 ❤️",threadID);
+     return api.sendMessage("__🥰  𝐌𝐀𝐈𝐍 𝐓𝐎 𝐀𝐋𝐋𝐀𝐇 𝐊𝐀 𝐁𝐀𝐌𝐃𝐀 𝐇𝐔 𝐏𝐘𝐀𝐑 𝐒𝐄 𝐁𝐎𝐋𝐎 𝐀𝐒𝐋𝐀𝐌𝐔𝐀𝐋𝐈𝐊𝐔𝐌 😍 ❤️",threadID);
    };
 
 if ((event.body.toLowerCase() == "🤲") ||(event.body.toLowerCase() == "Assalamu alaikum")) {
      return api.sendMessage("Walekum assalam", threadID);
    };
 
-  if ((event.body.toLowerCase() == "") || (event.body.toLowerCase() == "") || (event.body.toLowerCase() == "")) {
-    return api.sendMessage("️", threadID);
+  if ((event.body.toLowerCase() == "😎") || (event.body.toLowerCase() == "") || (event.body.toLowerCase() == "")) {
+    return api.sendMessage("️𝐂𝐇𝐀𝐒𝐇𝐌𝐀 𝐇𝐀𝐓𝐎𝐍𝐀 𝐒𝐈𝐑 𝐊𝐘𝐀 𝐍𝐀𝐀𝐌 𝐇𝐀𝐈 𝐀𝐏𝐊𝐀😁😁😁", threadID);
    };
 
    if ((event.body.toLowerCase() == "😐") || (event.body.toLowerCase() == "😐😐") || (event.body.toLowerCase() == "😐😐😐") || (event.body.toLowerCase() == "😐😐😐😐")) {
@@ -103,8 +103,8 @@ if ((event.body.toLowerCase() == "🤲") ||(event.body.toLowerCase() == "Assalam
    };
 
   if
-((event.body.toLowerCase() == "") || (event.body.toLowerCase() == "")) {
-     return api.sendMessage("️", threadID);
+((event.body.toLowerCase() == "thankyou") || (event.body.toLowerCase() == "")) {
+     return api.sendMessage("️main huni itni achi sab log tarif kar the hai meri😁😁😎", threadID);
    };
 
    if ((event.body.toLowerCase() == "😋😋") || (event.body.toLowerCase() == "😋😋😋") || (event.body.toLowerCase() == "😋")) {
@@ -112,7 +112,7 @@ if ((event.body.toLowerCase() == "🤲") ||(event.body.toLowerCase() == "Assalam
    };
 
    if ((event.body.toLowerCase() == "😝") || (event.body.toLowerCase() == "😝😝")) {
-     return api.sendMessage("️𝐉𝐚𝐁𝐚𝐍 𝐀𝐧𝐃𝐚𝐑 𝐊𝐚𝐑𝐨 𝐁𝐚𝐑𝐧𝐀  ___𝐀𝐀𝐃𝐈 __𝐁𝐀𝐁𝐔 __ 𝐒𝐞 𝐊𝐡𝐀 𝐊𝐞 𝐊𝐚𝐓𝐛𝐀 𝐃𝐮𝐍𝐠𝐀 🤸‍♂️😸.", threadID);
+     return api.sendMessage("️𝐙𝐚𝐁𝐚𝐍 𝐀𝐧𝐃𝐚𝐑 𝐊𝐚𝐑𝐨 𝐁𝐚𝐑𝐧𝐀  ___𝐒𝐇𝐀𝐀𝐍 __𝐊𝐇𝐀𝐍 __ 𝐒𝐞 𝐊𝐡𝐀 𝐊𝐞 𝐊𝐚𝐓𝐛𝐀 𝐃𝐮𝐍𝐠𝐀 🤸‍♂️😸.", threadID);
    };
 
    if ((event.body.toLowerCase() == "main hu") || (event.body.toLowerCase() == "Jaan")) {
@@ -144,15 +144,15 @@ if ((event.body.toLowerCase() == "🤲") ||(event.body.toLowerCase() == "Assalam
    };
 
    if ((event.body.toLowerCase() == "does the bot love you") || (event.body.toLowerCase() == "does the bot love you")) {
-     return api.sendMessage("🌸====『*★᭄𝗖𝗿𝗲𝗱𝗶𝘁'𝘀  ཫ༄𒁍≛🥰आदि बाबू❤️ *★᭄ ཫ༄𒁍≛ 』====🌸__💙 Yes I love you and everyone so much", threadID);
+     return api.sendMessage("🌸====『*★᭄𝗖𝗿𝗲𝗱𝗶𝘁'𝘀  ཫ༄𒁍≛🥰𝐒𝐇𝐀𝐀𝐍❤️ *★᭄ ཫ༄𒁍≛ 』====🌸__💙 Yes I love you and everyone so much", threadID);
    };
 
    if ((event.body.toLowerCase() == "bot go to sleep") || (event.body.toLowerCase() == "bot goes to sleep")) {
-     return api.sendMessage("🌸====『*★᭄𝗖𝗿𝗲𝗱𝗶𝘁'𝘀  ཫ༄𒁍≛आदि❤️बाबू❤ *★᭄ ཫ༄𒁍≛ 』====🌸__💙I'm a bot, you're the one who should go to sleep <3", threadID);
+     return api.sendMessage("🌸====『*★᭄𝗖𝗿𝗲𝗱𝗶𝘁'𝘀  ཫ༄𒁍𝐒𝐇𝐀𝐀𝐍❤️𝐊𝐇𝐀𝐍❤ *★᭄ ཫ༄𒁍≛ 』====🌸__💙I'm a bot, you're the one who should go to sleep <3", threadID);
    };
 
-   if ((event.body.toLowerCase() == "") || (event.body.toLowerCase() == "")) {
-     return api.sendMessage("", threadID);
+   if ((event.body.toLowerCase() == "😏") || (event.body.toLowerCase() == "")) {
+     return api.sendMessage("𝐛𝐞𝐭𝐚 𝐚𝐭𝐭𝐢𝐭𝐮𝐝𝐞 𝐭𝐨 𝐤𝐡𝐨𝐬𝐫𝐲 𝐝𝐞𝐤𝐡 𝐭𝐡𝐞 𝐡𝐚𝐢😏😏😁", threadID);
    };
 
    if ((event.body.toLowerCase() == "😶😶") || (event.body.toLowerCase() == "😶")) {
@@ -166,7 +166,7 @@ if ((event.body.toLowerCase() == "🤲") ||(event.body.toLowerCase() == "Assalam
   
   if (event.body.indexOf("Bot") == 0 || (event.body.indexOf("Bot") == 0)) {
     var msg = {
-      body: ` ${name} \n____________________________________\n\n${rand}\n____________________________________ \n𝐎𝐰𝐧𝐞𝐫 ➻  ────  𝐀𝐚̃𝐃𝐢   𝐁𝐚𝐁𝐮`
+      body: ` ${name} \n____________________________________\n\n${rand}\n____________________________________ \n𝐎𝐰𝐧𝐞𝐫 ➻  ────  𝐒𝐇𝐀𝐀𝐍   𝐊𝐇𝐀𝐍 𝐊`
     }
     return api.sendMessage(msg, threadID, messageID);
   };
