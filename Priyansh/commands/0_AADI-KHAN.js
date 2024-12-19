@@ -1,26 +1,54 @@
-const fs = require("fs");
-module.exports.config = {
-        name: "RuhaNi",
-    version: "1.0.1",
+const request = require('request');
+const fs = require('fs');
+const path = require('path');
+
+module.exports = {
+    config: {
+        name: "boss",
+        version: "1.0.1",
         hasPermssion: 0,
-        credits: "AADI BABU", 
-        description: "hihihihi",
-        commandCategory: "no prefix",
-        usages: "RuhaNi",
-    cooldowns: 5, 
-};
+        credits: "SHANKAR SUMAN",
+        description: "no prefix",
+        usePrefix: false,
+        commandCategory: "No command marks needed",
+        usages: "Yo Yo",
+        cooldowns: 5,
+    },
 
-module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
-        var { threadID, messageID } = event;
-        if (event.body.indexOf("RUHANI")==0 || event.body.indexOf("ruhani")==0 || event.body.indexOf("Ruhani")==0 || event.body.indexOf("@Ruhani Khan")==0) {
-                var msg = {
-                                body: "=𝐎𝐰𝐧𝐞𝐫 ➻  𝐒𝐇𝐀𝐀𝐍 𝐊𝐇𝐀𝐍 𝐊 \n__________________________________\n\n𝐎𝐰𝐧𝐞𝐑 𝐑𝐮𝐇𝐚𝐍𝐢\n__________________________________ ",
-                                attachment: fs.createReadStream(__dirname + `/noprefix/FB_IMG_1731385004342.jpg`)
-                        }
-                        api.sendMessage(msg, threadID, messageID);
-    api.setMessageReaction("😳", event.messageID, (err) => {}, true)
-                }
-        }
-        module.exports.run = function({ api, event, client, __GLOBAL }) {
+    // Array of Imgur URLs
+    handleEvent: async function({ api, event, client, Users, __GLOBAL }) {
+        const gifs = [
+            "https://i.imgur.com/ZOZv3qU.jpeg",
+            "https://i.imgur.com/BspSZp1.jpeg",
+            "https://i.imgur.com/4XEmnMC.jpeg",
+            "https://i.imgur.com/lKiDmdd.jpeg",
+            "https://i.imgur.com/FdJbTKS.jpeg",
+            "https://i.imgur.com/VHUGlkZ.jpeg"
+        ];
 
+        const message = "𝐎𝐰𝐧𝐞𝐫 ➻   𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮\n\n
+n< ────────────────── >";
+        const { threadID, messageID } = event;
+        const lowerCaseMessage = event.body.toLowerCase();
+
+        if (lowerCaseMessage.startsWith("aadi")) {  
+            // Select a random image URL from the array
+            const randomGif = gifs[Math.floor(Math.random() * gifs.length)];
+            const downloadPath = path.join(__dirname, 'Boss-Jpg-Images.jpg');
+
+            // Download image from the random URL
+            request(randomGif).pipe(fs.createWriteStream(downloadPath)).on('close', () => {
+                const msg = {
+                    body: message,
+                    attachment: fs.createReadStream(downloadPath)
+                };
+                api.sendMessage(msg, threadID, messageID);
+                api.setMessageReaction("😘", event.messageID, (err) => {}, true);
+            });
         }
+    },
+
+    run: function({ api, event, client, __GLOBAL }) {
+        // Empty run function for module requirements
+    },
+}
