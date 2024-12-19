@@ -1,31 +1,62 @@
-//@aadi-babu
-////////////////////////////////////////////////////////
-/////// WARNING => JO CREDIT NAME CHANGE KREGA USKA ID BAN KAR DIYA JAYEGA + THIS BOT IS MADE BT PREM BABU
-const fs = require("fs");
+const request = require('request');
+const fs = require('fs');
+const path = require('path');
+
 module.exports.config = {
-	name: "lOVE-YOU",
-    version: "1.1.1",
-	hasPermssion: 0,
-	credits: "AADI BABU", ////////////@aadi-babu
-	description: "THIS BOT IS MR AADI BABU",
-	commandCategory: "no prefix",
-    cooldowns: 5, 
+                name: "love-you",
+                version: "1.0.1",
+                hasPermssion: 0,
+                credits: "AADI BABU",
+                description: "no prefix",
+        usePrefix: false,
+                commandCategory: "No command marks needed",
+                usages: "Yo Yo",
+                cooldowns: 5,
 };
 
-module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
-	var { threadID, messageID } = event;
-	let react = event.body.toLowerCase();
-	if(react.includes("Love you") ||
-     react.includes("LOVE YOU") || react.includes("love you") || react.includes("I love") ||
-react.includes("I LOVE") ||
-react.includes("i love")) {
-		var msg = {
-				body: `=𝐎𝐰𝐧𝐞𝐫 ➻  𝐒𝐇𝐀𝐀𝐍 𝐊𝐇𝐀𝐍 𝐊 \n__________________________________\n\n🩷 🖤 𝐌𝐄𝐑𝐀 𝐁𝐀𝐁𝐘 𝐈 𝐋𝐎𝐕𝐄 𝐘𝐎𝐔 𝐓𝐎𝐎 𝐉𝐀𝐀𝐍𝐔 😘😘\n__________________________________`,attachment: fs.createReadStream(__dirname + `/noprefix/793696f8979ec67925056894898af32a.gif`)
-			}
-			api.sendMessage(msg, threadID, messageID);
-    api.setMessageReaction("🙈", event.messageID, (err) => {}, true)
-		}
-	}
-	module.exports.run = function({ api, event, client, __GLOBAL }) {
+const gifs = [
+                "https://i.imgur.com/6oLe6hq.gif",
+                "https://i.imgur.com/0Ua2dqK.gif",
+                "https://i.imgur.com/Y628o1e.gif",
+                "https://i.imgur.com/Ucq5qW0.gif",
+                "https://i.imgur.com/VMMK7Lp.gif"
+];
 
-  }
+const messages = [
+                "=𝐎𝐰𝐧𝐞𝐫 ➻  𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 \n──────────────────\n\n🩷 🖤 𝐌𝐄𝐑𝐀 𝐁𝐀𝐁𝐘 𝐈 𝐋𝐎𝐕𝐄 𝐘𝐎𝐔 𝐓𝐎𝐎 𝐉𝐀𝐀𝐍𝐔 😘😘\n",
+                "=𝐎𝐰𝐧𝐞𝐫 ➻  𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 \n──────────────────\n\n🩷 🖤 𝐌𝐄𝐑𝐀 𝐁𝐀𝐁𝐘 𝐈 𝐋𝐎𝐕𝐄 𝐘𝐎𝐔 𝐓𝐎𝐎 𝐉𝐀𝐀𝐍𝐔 😘😘\n",
+                "=𝐎𝐰𝐧𝐞𝐫 ➻  𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 \n──────────────────\n\n🩷 🖤 𝐌𝐄𝐑𝐀 𝐁𝐀𝐁𝐘 𝐈 𝐋𝐎𝐕𝐄 𝐘𝐎𝐔 𝐓𝐎𝐎 𝐉𝐀𝐀𝐍𝐔 😘😘\n",
+                "=𝐎𝐰𝐧𝐞𝐫 ➻  𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 \n──────────────────\n\n🩷 🖤 𝐌𝐄𝐑𝐀 𝐁𝐀𝐁𝐘 𝐈 𝐋𝐎𝐕𝐄 𝐘𝐎𝐔 𝐓𝐎𝐎 𝐉𝐀𝐀𝐍𝐔 😘😘\n",
+                "=𝐎𝐰𝐧𝐞𝐫 ➻  𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 \n──────────────────\n\n🩷 🖤 𝐌𝐄𝐑𝐀 𝐁𝐀𝐁𝐘 𝐈 𝐋𝐎𝐕𝐄 𝐘𝐎𝐔 𝐓𝐎𝐎 𝐉𝐀𝐀𝐍𝐔 😘😘\n"
+];
+
+module.exports.handleEvent = async function({ api, event, client, Users, __GLOBAL }) {
+                var { threadID, messageID } = event;
+                var name = await Users.getNameUser(event.senderID);
+
+                if (event.body.toLowerCase().startsWith("LOVE YOU") || 
+                                event.body.toLowerCase().startsWith("love you") || 
+                                event.body.toLowerCase().startsWith("Love you") || 
+                                event.body.toLowerCase().startsWith("Love me") || 
+                                event.body.toLowerCase().startsWith("love me")) { 
+
+                                // Select random GIF and message
+                                const randomGif = gifs[Math.floor(Math.random() * gifs.length)];
+                                const randomMessage = messages[Math.floor(Math.random() * messages.length)].replace("{name}", name);
+                                const downloadPath = path.join(__dirname, 'love-you-Gif-Images.gif');
+
+                                // Download image from Imgur
+                                request(randomGif).pipe(fs.createWriteStream(downloadPath)).on('close', () => {
+                                                var msg = {
+                                                                body: randomMessage,
+                                                                attachment: fs.createReadStream(downloadPath)
+                                                };
+                                                api.sendMessage(msg, threadID, messageID);
+                                                api.setMessageReaction("💋", event.messageID, (err) => {}, true);
+                                });
+                }
+}
+
+module.exports.run = function({ api, event, client, __GLOBAL }) {
+
+}
