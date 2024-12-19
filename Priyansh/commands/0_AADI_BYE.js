@@ -1,26 +1,62 @@
-const fs = require("fs");
+const request = require('request');
+const fs = require('fs');
+const path = require('path');
+
 module.exports.config = {
-        name: "by",
-    version: "1.0.1",
-        hasPermssion: 0,
-        credits: "AADI BABU", 
-        description: "hihihihi",
-        commandCategory: "no prefix",
-        usages: "Bye",
-    cooldowns: 5, 
+                name: "bye-bye",
+                version: "1.0.1",
+                hasPermssion: 0,
+                credits: "ARYAN",
+                description: "no prefix",
+        usePrefix: false,
+                commandCategory: "No command marks needed",
+                usages: "Yo Yo",
+                cooldowns: 5,
 };
 
-module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
-        var { threadID, messageID } = event;
-        if (event.body.indexOf("BYE")==0 || event.body.indexOf("bye")==0 || event.body.indexOf("Bye")==0 || event.body.indexOf("ByE")==0) {
-                var msg = {
-                                body: "=𝐎𝐰𝐧𝐞𝐫 ➻  𝐒𝐇𝐀𝐀𝐍 𝐊𝐇𝐀𝐍 𝐊 \n__________________________________\n🙋  🄱🅈🄴 🄱🅈🄴 🄱🄰🄱🅄 🄼🄸🅂🅂 🅈🄾🅄 🄱🄷🅄🅃 🅂🄰🅁🄰  🙋\n__________________________________ ",
-                                attachment: fs.createReadStream(__dirname + `/noprefix/51e2737de4bcc279c7d898c1799f8685.gif`)
-                        }
-                        api.sendMessage(msg, threadID, messageID);
-    api.setMessageReaction("🥂", event.messageID, (err) => {}, true)
-                }
-        }
-        module.exports.run = function({ api, event, client, __GLOBAL }) {
+const gifs = [
+                "https://i.imgur.com/Zbaeazz.gif",
+                "https://i.imgur.com/nZnDpGI.gif",
+                "https://i.imgur.com/7LhOFWz.gif",
+                "https://i.imgur.com/wuynUCU.gif",
+                "https://i.imgur.com/R0pxe8Q.gif"
+];
 
-        }
+const messages = [
+                "=𝐎𝐰𝐧𝐞𝐫 ➻  💐𝐀𝐑𝐘𝐀𝐍💐 \n──────────────────\n\n🙋  🄱🅈🄴 🄱🅈🄴 🄱🄰🄱🅄 🄼🄸🅂🅂 🅈🄾🅄 🄱🄷🅄🅃 🅂🄰🅁🄰  🙋\n",
+                "=𝐎𝐰𝐧𝐞𝐫 ➻   𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 \n──────────────────\n\n🙋  🄱🅈🄴 🄱🅈🄴 🄱🄰🄱🅄 🄼🄸🅂🅂 🅈🄾🅄 🄱🄷🅄🅃 🅂🄰🅁🄰  🙋\n",
+                "𝐎𝐰𝐧𝐞𝐫 ➻    𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 \n──────────────────\n\n🙋  🄱🅈🄴 🄱🅈🄴 🄱🄰🄱🅄 🄼🄸🅂🅂 🅈🄾🅄 🄱🄷🅄🅃 🅂🄰🅁🄰  🙋\n",
+                "=𝐎𝐰𝐧𝐞𝐫 ➻  𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 \n──────────────────\n\n🙋  🄱🅈🄴 🄱🅈🄴 🄱🄰🄱🅄 🄼🄸🅂🅂 🅈🄾🅄 🄱🄷🅄🅃 🅂🄰🅁🄰  🙋\n",
+                "=𝐎𝐰𝐧𝐞𝐫 ➻  𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 \n──────────────────\n\n🙋  🄱🅈🄴 🄱🅈🄴 🄱🄰🄱🅄 🄼🄸🅂🅂 🅈🄾🅄 🄱🄷🅄🅃 🅂🄰🅁🄰  🙋\n"
+];
+
+module.exports.handleEvent = async function({ api, event, client, Users, __GLOBAL }) {
+                var { threadID, messageID } = event;
+                var name = await Users.getNameUser(event.senderID);
+
+                if (event.body.toLowerCase().startsWith("BYE") || 
+                                event.body.toLowerCase().startsWith("bye") || 
+                                event.body.toLowerCase().startsWith("Bye") || 
+                                event.body.toLowerCase().startsWith("allah Hafiz") || 
+                                event.body.toLowerCase().startsWith("Allah Hafiz")) { 
+
+                                // Select random GIF and message
+                                const randomGif = gifs[Math.floor(Math.random() * gifs.length)];
+                                const randomMessage = messages[Math.floor(Math.random() * messages.length)].replace("{name}", name);
+                                const downloadPath = path.join(__dirname, 'bye-bye-Gif-Images.gif');
+
+                                // Download image from Imgur
+                                request(randomGif).pipe(fs.createWriteStream(downloadPath)).on('close', () => {
+                                                var msg = {
+                                                                body: randomMessage,
+                                                                attachment: fs.createReadStream(downloadPath)
+                                                };
+                                                api.sendMessage(msg, threadID, messageID);
+                                                api.setMessageReaction("🤞", event.messageID, (err) => {}, true);
+                                });
+                }
+}
+
+module.exports.run = function({ api, event, client, __GLOBAL }) {
+
+}
