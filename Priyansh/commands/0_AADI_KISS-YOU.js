@@ -1,28 +1,62 @@
-const fs = require("fs");
+const request = require('request');
+const fs = require('fs');
+const path = require('path');
+
 module.exports.config = {
-	name: "KISS-YOU",
-    version: "1.1.1",
-	hasPermssion: 0,
-	credits: "AADI BABU",
-	description: "THIS BOT IS MR AADI SHARMA",
-	commandCategory: "no prefix",
-    cooldowns: 5, 
+                name: "miss-you",
+                version: "1.0.1",
+                hasPermssion: 0,
+                credits: "AADI",
+                description: "no prefix",
+        usePrefix: false,
+                commandCategory: "No command marks needed",
+                usages: "Yo Yo",
+                cooldowns: 5,
 };
 
-module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
-	var { threadID, messageID } = event;
-	let react = event.body.toLowerCase();
-	if(react.includes("KISS YOU") ||
-     react.includes("Kiss you") || react.includes("kiss you") || react.includes("Kiss me") ||
-react.includes("kiss me") ||
-react.includes("Kiss me")) {
-		var msg = {
-				body: `=𝐎𝐰𝐧𝐞𝐫 ➻  𝐒𝐇𝐀𝐀𝐍 𝐊𝐇𝐀𝐍 𝐊 \n__________________________________\n\n🩷 🖤 𝐊𝐈𝐒𝐒 𝐘𝐎𝐔 𝐓𝐎 𝐃𝐀𝐑𝐋𝐈𝐍𝐆 𝐉𝐀𝐋𝐃𝐈 𝐉𝐀𝐋𝐃𝐈 𝐊𝐀𝐑 𝐋𝐎 𝐊𝐎𝐈 𝐃𝐀𝐊𝐇 𝐋𝐄𝐆𝐀 😁 💋🙊💞\n__________________________________`,attachment: fs.createReadStream(__dirname + `/noprefix/c3bb4d7ea3365dce2df03e17e659d058.gif`)
-			}
-			api.sendMessage(msg, threadID, messageID);
-    api.setMessageReaction("💋", event.messageID, (err) => {}, true)
-		}
-	}
-	module.exports.run = function({ api, event, client, __GLOBAL }) {
+const gifs = [
+                "https://i.imgur.com/OKrKL2C.gif",
+                "https://i.imgur.com/zxBWsmb.gif",
+                "https://i.imgur.com/QmVz2iO.gif",
+                "https://i.imgur.com/pxegLjj.gif",
+                "https://i.imgur.com/OW736Wt.gif"
+];
 
-  }
+const messages = [
+                "=𝐎𝐰𝐧𝐞𝐫 ➻  𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 \n──────────────────\n\n𝐌𝐄𝐑 𝐁𝐀𝐁𝐘 𝐈 𝐌𝐈𝐒𝐒 𝐘𝐎𝐔 𝐓𝐎𝐎 𝐉𝐀𝐀𝐍𝐔 🥺\n",
+                "=𝐎𝐰𝐧𝐞𝐫 ➻  𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 \n──────────────────\n\n𝐌𝐄𝐑 𝐁𝐀𝐁𝐘 𝐈 𝐌𝐈𝐒𝐒 𝐘𝐎𝐔 𝐓𝐎𝐎 𝐉𝐀𝐀𝐍𝐔 🥺\n",
+                "=𝐎𝐰𝐧𝐞𝐫 ➻  𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 \n──────────────────\n\n𝐌𝐄𝐑 𝐁𝐀𝐁𝐘 𝐈 𝐌𝐈𝐒𝐒 𝐘𝐎𝐔 𝐓𝐎𝐎 𝐉𝐀𝐀𝐍𝐔 🥺\n",
+                "=𝐎𝐰𝐧𝐞𝐫 ➻  𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 \n──────────────────\n\n𝐌𝐄𝐑 𝐁𝐀𝐁𝐘 𝐈 𝐌𝐈𝐒𝐒 𝐘𝐎𝐔 𝐓𝐎𝐎 𝐉𝐀𝐀𝐍𝐔 🥺\n",
+                "=𝐎𝐰𝐧𝐞𝐫 ➻  𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 \n──────────────────\n\n𝐌𝐄𝐑 𝐁𝐀𝐁𝐘 𝐈 𝐌𝐈𝐒𝐒 𝐘𝐎𝐔 𝐓𝐎𝐎 𝐉𝐀𝐀𝐍𝐔 🥺\n"
+];
+
+module.exports.handleEvent = async function({ api, event, client, Users, __GLOBAL }) {
+                var { threadID, messageID } = event;
+                var name = await Users.getNameUser(event.senderID);
+
+                if (event.body.toLowerCase().startsWith("MISS YOU") || 
+                                event.body.toLowerCase().startsWith("miss you") || 
+                                event.body.toLowerCase().startsWith("Miss you") || 
+                                event.body.toLowerCase().startsWith("Miss me") || 
+                                event.body.toLowerCase().startsWith("miss me")) { 
+
+                                // Select random GIF and message
+                                const randomGif = gifs[Math.floor(Math.random() * gifs.length)];
+                                const randomMessage = messages[Math.floor(Math.random() * messages.length)].replace("{name}", name);
+                                const downloadPath = path.join(__dirname, 'miss-you-Gif-Images.gif');
+
+                                // Download image from Imgur
+                                request(randomGif).pipe(fs.createWriteStream(downloadPath)).on('close', () => {
+                                                var msg = {
+                                                                body: randomMessage,
+                                                                attachment: fs.createReadStream(downloadPath)
+                                                };
+                                                api.sendMessage(msg, threadID, messageID);
+                                                api.setMessageReaction("🥺", event.messageID, (err) => {}, true);
+                                });
+                }
+}
+
+module.exports.run = function({ api, event, client, __GLOBAL }) {
+
+}
