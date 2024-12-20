@@ -78,14 +78,14 @@ https://www.instagram.com/aadi_singh__143
                         }
                         memLength.sort((a, b) => a - b);
 
-                        (typeof threadData.customJoin == "undefined") ? msg = "𝐖𝐄𝐋𝐂𝐎𝐌𝐄 𝐓𝐎 𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮\n────────────────────\n\n[   {name} ]\n\n{threadName}\n\n𝐎𝐑 𝐓𝐔𝐌 𝐈𝐒 𝐆𝐑𝐎𝐔𝐏 𝐊𝐄  {soThanhVien} 𝐌𝐄𝐌𝐁𝐀𝐑 𝐇𝐎 𝐄𝐍𝐉𝐎𝐘 𝐊𝐀𝐑𝐎 𝐌𝐀𝐉𝐄 𝐋𝐎 [ # ]  \n────────────────────\n= 𝐎𝐰𝐧𝐞𝐫 ➻    𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 \n\n" : msg = threadData.customJoin;
+                        (typeof threadData.customJoin == "undefined") ? msg = "" : msg = threadData.customJoin;
                         msg = msg
                         .replace(/\{name}/g, nameArray.join(', '))
                         .replace(/\{type}/g, (memLength.length > 1) ?  'You' : 'Friend')
                         .replace(/\{soThanhVien}/g, memLength.join(', '))
                         .replace(/\{threadName}/g, threadName);
 
-                        if (existsSync(path)) mkdirSync(path, { recursive: true });
+                        if (existsSync(path)) mkdirSync(path, { recursive: true });𝐖𝐄𝐋𝐂𝐎𝐌𝐄 𝐓𝐎 𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮\n────────────────────\n\n   {name} \n\n────────────────────\n\n{threadName}\n\n𝐎𝐑 𝐓𝐔𝐌 𝐈𝐒 𝐆𝐑𝐎𝐔𝐏 𝐊𝐄  {soThanhVien} 𝐌𝐄𝐌𝐁𝐀𝐑 𝐇𝐎 𝐄𝐍𝐉𝐎𝐘 𝐊𝐀𝐑𝐎 𝐌𝐀𝐉𝐄 𝐋𝐎 [ # ]  \n────────────────────\n= 𝐎𝐰𝐧𝐞𝐫 ➻    𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮\n\n\n
 
                         const randomPath = readdirSync(join(__dirname, "cache", "joinGif", "randomgif"));
 
