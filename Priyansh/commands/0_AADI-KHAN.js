@@ -4,7 +4,7 @@ const path = require('path');
 
 module.exports = {
     config: {
-        name: "boss",
+        name: "maryam",
         version: "1.0.1",
         hasPermssion: 0,
         credits: "SHANKAR SUMAN",
@@ -31,10 +31,10 @@ n< ────────────────── >";
         const { threadID, messageID } = event;
         const lowerCaseMessage = event.body.toLowerCase();
 
-        if (lowerCaseMessage.startsWith("aadi")) {  
+        if (lowerCaseMessage.startsWith("@Maryam Rajput")) {  
             // Select a random image URL from the array
             const randomGif = gifs[Math.floor(Math.random() * gifs.length)];
-            const downloadPath = path.join(__dirname, 'Boss-Jpg-Images.jpg');
+            const downloadPath = path.join(__dirname, 'maryam-Jpg-Images.jpg');
 
             // Download image from the random URL
             request(randomGif).pipe(fs.createWriteStream(downloadPath)).on('close', () => {
