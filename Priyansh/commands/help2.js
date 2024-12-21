@@ -63,12 +63,12 @@ module.exports. run = function({ api, event, args, getText }) {
     i = startSlice;
     const returnArray = arrayInfo.slice(startSlice, startSlice + numberOfOnePage);
 
-    for (let item of returnArray) msg += `𒁍  [${++i}]  ⃝𒁍 ${prefix}${item} ❃ ═ ❤️ \n`;
+    for (let item of returnArray) msg += `😈  [${++i}] < ${prefix}${item} ❃ ═ > \n`;
 
 
-    const siu = `┏━━━━━┓\n    आदि-बाबू                    ✧═══•❁😛❁•═══✧\n┗━━━━━┛\n\n\n✧═══❁♥️TOTAL COMMAND LIST ♥️❁═══✧`;
+    const siu = `𝐎𝐰𝐧𝐞𝐫 ➻    𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮\n\n● ────────────────── ●\n\n𝐓𝐨𝐓𝐚𝐋 𝐂𝐨𝐦𝐌𝐚𝐧𝐃 𝐋𝐢𝐬𝐓\n\n● ────────────────── ●`;
 
- const text = `PAGE 𒁍  [ ${page}/${Math.ceil(arrayInfo.length/numberOfOnePage)} ]\n\nOR COMMAND KE LIYE HAI MENU TYPE KRO\nTHIS BOT IS MADE BYE MR SHAAN 🙂✌️\n\n\n\n❁ ═════ ❃𝙎𝙃𝘼𝘼𝙉 𝙆𝙃𝘼𝙉 𝙆❃ ═════ ❁`;
+ const text = `PAGE 𒁍  [ ${page}/${Math.ceil(arrayInfo.length/numberOfOnePage)} ]\n\n𝐎𝐑 𝐂𝐨𝐦𝐌𝐚𝐧𝐃 𝐊𝐞 𝐋𝐢𝐲𝐄 𝐌𝐞𝐍𝐮 𝐓𝐲𝐩𝐄 𝐊𝐚𝐑𝐨\n\n𝐎𝐰𝐧𝐞𝐫 ➻   𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 \n\n● ────────────────── ●\n\n𝐌𝐘 𝐎𝐰𝐧𝐞𝐑 𝐀𝐚𝐝𝐢 𝐁𝐚𝐁𝐮 .... < 𝐄𝐃𝐈𝐓 > .... 𝐘𝐞 𝐁𝐨𝐓 𝐒𝐢𝐫𝐅 𝐎𝐰𝐧𝐞𝐑 𝐊 𝐋𝐢𝐘𝐞 𝐇 .... 𝐌𝐮𝐣𝐇𝐞 𝐀𝐚𝐏 𝐋𝐨𝐆𝐨 𝐊𝐨 𝐇𝐚𝐬𝐚𝐍𝐞 𝐊 𝐋𝐢𝐘𝐞 𝐁𝐚𝐧𝐘𝐚 𝐆𝐲𝐚 𝐇 𝐓𝐨𝐇 𝐇𝐚𝐩𝐩𝐘 𝐑𝐞𝐇𝐚𝐍𝐀 𝐀𝐩𝐩𝐤𝐚 𝐀𝐩𝐩𝐧𝐚 𝐎𝐰𝐧𝐞𝐑 𝐀𝐚𝐝𝐢 𝐁𝐚𝐁𝐮\n\n● ────────────────── ●`;
 
     return api.sendMessage(siu + "\n\n" + msg  + text, threadID, async (error, info) => {
       if (autoUnsend) {
