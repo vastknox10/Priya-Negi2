@@ -1,4 +1,4 @@
-nst schedule = require('node-schedule');
+const schedule = require('node-schedule');
 const moment = require('moment-timezone');
 const chalk = require('chalk');
 
@@ -6,7 +6,7 @@ module.exports.config = {
     name: 'autosent',
     version: '10.0.0',
     hasPermssion: 0,
-    credits: '𝐌.𝐑 𝐀𝐑𝐘𝐀𝐍',
+    credits: '𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭',
     description: 'Set Karne Ke Bad Automatically Msg Send Karega',
     commandCategory: 'group messenger',
     usages: '[]',
@@ -28,7 +28,7 @@ const messages = [
     { time: '11:00 AM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 11:00 A𝐌 ⏳ 𝐌𝐮𝐣𝐡𝐞 𝐁𝐡𝐢 𝐘𝐚𝐚𝐝 𝐊𝐚𝐫 𝐋𝐢𝐲𝐚 𝐊𝐚𝐫𝐨😻 ──── •💜• ────' },
     { time: '12:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 12:00 𝐏𝐌 ⏳ 𝐆𝐨𝐨𝐝 𝐀𝐟𝐭𝐞𝐫𝐍𝐨𝐨𝐧 𝐄𝐯𝐞𝐫𝐲𝐨𝐧𝐞🌞 𝐊𝐢𝐭𝐧𝐢 𝐆𝐚𝐫𝐦𝐢 𝐇 𝐁𝐚𝐡𝐚𝐫🥵 ──── •💜• ────' },
     { time: '1:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 1:00 𝐏𝐌 ⏳ 𝐋𝐮𝐧𝐜𝐡 𝐊𝐚𝐫𝐥𝐨 𝐀𝐛𝐡𝐢😇 ──── •💜• ────' },
-    { time: '2:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 2:00 𝐏𝐌 ⏳ 𝐁𝐨𝐥𝐨 𝐉𝐚𝐢 𝐒𝐡𝐫𝐞𝐞 𝐑𝐚𝐦 💖😇 ──── •💜• ────' },
+    { time: '2:27 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 2:00 𝐏𝐌 ⏳ 𝐁𝐨𝐥𝐨 𝐉𝐚𝐢 𝐒𝐡𝐫𝐞𝐞 𝐑𝐚𝐦 💖😇 ──── •💜• ────' },
     { time: '3:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 3:00 𝐏𝐌 ⏳ 𝐓𝐡𝐨𝐝𝐚 𝐀𝐚𝐫𝐚𝐦 𝐊𝐚𝐫𝐥𝐨 𝐀𝐛𝐡𝐢😘 ──── •💜• ────' },
     { time: '4:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 4:00 𝐏𝐌 ⏳ 𝐁𝐚𝐡𝐮𝐭 𝐆𝐚𝐫𝐦𝐢 𝐇 𝐀𝐚𝐣🥵 ──── •💜• ────' },
     { time: '5:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 5:00 𝐏𝐌 ⏳ 𝐇𝐚𝐫 𝐇𝐚𝐥 𝐌𝐞 𝐇𝐚𝐦𝐞𝐬𝐡𝐚 𝐊𝐡𝐮𝐬𝐡 𝐑𝐚𝐡𝐨 😇 ──── •💜• ────' },
@@ -45,26 +45,32 @@ const videoLinks = [
     "https://i.imgur.com/ESR947v.jpeg",
     "https://i.imgur.com/ESR947v.jpeg"
 ];
-module.exports.onLoad = () => setInterval(() => {
-    const getRandom = array => array[Math.floor(Math.random() * array.length)];
-    const now = new Date(Date.now() + 25200000);
-    const currentTime = now.toTimeString().split(' ')[0];
-    const currentDate = now.toLocaleDateString();
-    const currentDay = now.toLocaleString('en-US', { weekday: 'long' });
+module.exports.onLoad = ({ api }) => {
+    console.log(chalk.bold.hex("#00c300")("============ SUCCESFULLY LOADED THE AUTOSENT COMMAND ============"));
 
-    const selectedMessage = messages.find(entry => entry.timer === currentTime);
+    messages.forEach(({ time, message }) => {
+        const [hour, minute, period] = time.split(/[: ]/);
+        let hour24 = parseInt(hour, 10);
+        if (period === 'PM' && hour !== '12') {
+            hour24 += 12;
+        } else if (period === 'AM' && hour === '12') {
+            hour24 = 0;
+        }
 
-    if (selectedMessage) {
-        const randomVideo = getRandom(videoLinks);
-        const formattedMessage = selectedMessage.message[0]
-            .replace("{currentTime}", currentTime)
-            .replace("{currentDate}", currentDate)
-            .replace("{currentDay}", currentDay);
+        const scheduledTime = moment.tz({ hour: hour24, minute: parseInt(minute, 10) }, 'Asia/Kolkata').toDate();
 
-global.data.allThreadID.forEach(threadID =>
-            api.sendMessage({ body: formattedMessage, attachment: randomVideo }, threadID)
-        );
-    }
-}, 1000);
+        schedule.scheduleJob(scheduledTime, () => {
+            global.data.allThreadID.forEach(threadID => {
+                api.sendMessage(message, threadID, (error) => {
+                    if (error) {
+                        console.error(`Failed to send message to ${threadID}:`, error);
+                    }
+                });
+            });
+        });
+    });
+};
 
-module.exports.run = () => {};
+module.exports.run = () => {
+    // This function can be left empty as the main logic is handled in onLoad
+};
