@@ -11,7 +11,18 @@ module.exports.config = {
     commandCategory: 'group messenger',
     usages: '[]',
     cooldowns: 3
-};
+    },
+
+    // Array of Imgur URLs
+    handleEvent: async function({ api, event, client, Users, __GLOBAL }) {
+        const gifs = [
+            "https://i.imgur.com/RFIWtNE.jpeg",
+            "https://i.imgur.com/RFIWtNE.jpeg",
+            "https://i.imgur.com/RFIWtNE.jpeg",
+            "https://i.imgur.com/J10Z1KR.jpeg",
+            "https://i.imgur.com/sg3eO0k.jpeg",
+            "https://i.imgur.com/BNuCzHx.jpeg"
+        ];
 
 const messages = [
     { time: '12:00 AM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 12:00 𝗔𝐌 ⏳ 𝐒𝐨 𝐉𝐚𝐨 𝐁𝐚𝐛𝐲 𝐆𝐨𝐨𝐝 𝐍𝐢𝐠𝐡𝐭 🥀 ──── •💜• ────' },
