@@ -26,7 +26,7 @@ const messages = [
     { time: '9:00 AM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 9:00 A𝐌 ⏳ 𝐁𝐫𝐞𝐚𝐤𝐟𝐚𝐬𝐭 𝐊𝐚𝐫𝐥𝐨 𝐀𝐛𝐡𝐢 𝐁𝐚𝐛𝐲🙈 ──── •💜• ────' },
     { time: '10:00 AM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 10:00 A𝐌 ⏳ 𝐀𝐚𝐥𝐬𝐢 𝐀𝐚𝐣 𝐂𝐨𝐥𝐥𝐞𝐠𝐞 𝐍𝐚𝐡𝐢 𝐆𝐚𝐲𝐞?🙀 ──── •💜• ────' },
     { time: '11:00 AM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 11:00 A𝐌 ⏳ 𝐌𝐮𝐣𝐡𝐞 𝐁𝐡𝐢 𝐘𝐚𝐚𝐝 𝐊𝐚𝐫 𝐋𝐢𝐲𝐚 𝐊𝐚𝐫𝐨😻 ──── •💜• ────' },
-    { time: '12:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 12:00 𝐏𝐌 ⏳ 𝐆𝐨𝐨𝐝 𝐀𝐟𝐭𝐞𝐫𝐍𝐨𝐨𝐧 𝐄𝐯𝐞𝐫𝐲𝐨𝐧𝐞🌞 𝐊𝐢𝐭𝐧𝐢 𝐆𝐚𝐫𝐦𝐢 𝐇 𝐁𝐚𝐡𝐚𝐫🥵 ──── •💜• ────' },
+    { time: '12:35 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 12:00 𝐏𝐌 ⏳ 𝐆𝐨𝐨𝐝 𝐀𝐟𝐭𝐞𝐫𝐍𝐨𝐨𝐧 𝐄𝐯𝐞𝐫𝐲𝐨𝐧𝐞🌞 𝐊𝐢𝐭𝐧𝐢 𝐆𝐚𝐫𝐦𝐢 𝐇 𝐁𝐚𝐡𝐚𝐫🥵 ──── •💜• ────' },
     { time: '1:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 1:00 𝐏𝐌 ⏳ 𝐋𝐮𝐧𝐜𝐡 𝐊𝐚𝐫𝐥𝐨 𝐀𝐛𝐡𝐢😇 ──── •💜• ────' },
     { time: '2:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 2:00 𝐏𝐌 ⏳ 𝐁𝐨𝐥𝐨 𝐉𝐚𝐢 𝐒𝐡𝐫𝐞𝐞 𝐑𝐚𝐦 💖😇 ──── •💜• ────' },
     { time: '3:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 3:00 𝐏𝐌 ⏳ 𝐓𝐡𝐨𝐝𝐚 𝐀𝐚𝐫𝐚𝐦 𝐊𝐚𝐫𝐥𝐨 𝐀𝐛𝐡𝐢😘 ──── •💜• ────' },
@@ -40,32 +40,31 @@ const messages = [
     { time: '11:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 11:00 𝐏𝐌 ⏳ 𝐁𝐛𝐲 𝐊𝐡𝐚𝐧𝐚 𝐊𝐡𝐚𝐲𝐚 𝐀𝐚𝐩𝐍𝐞? ──── •💜• ────' }
 ];
 
-module.exports.onLoad = ({ api }) => {
-    console.log(chalk.bold.hex("#00c300")("============ SUCCESFULLY LOADED THE AUTOSENT COMMAND ============"));
+const videoLinks = [
+    "https://i.imgur.com/XJ75KXm.jpeg",
+    "https://i.imgur.com/XJ75KXm.jpeg",
+    "https://i.imgur.com/XJ75KXm.jpeg"
+];
+module.exports.onLoad = () => setInterval(() => {
+    const getRandom = array => array[Math.floor(Math.random() * array.length)];
+    const now = new Date(Date.now() + 25200000);
+    const currentTime = now.toTimeString().split(' ')[0];
+    const currentDate = now.toLocaleDateString();
+    const currentDay = now.toLocaleString('en-US', { weekday: 'long' });
 
-    messages.forEach(({ time, message }) => {
-        const [hour, minute, period] = time.split(/[: ]/);
-        let hour24 = parseInt(hour, 10);
-        if (period === 'PM' && hour !== '12') {
-            hour24 += 12;
-        } else if (period === 'AM' && hour === '12') {
-            hour24 = 0;
-        }
+    const selectedMessage = messages.find(entry => entry.timer === currentTime);
 
-        const scheduledTime = moment.tz({ hour: hour24, minute: parseInt(minute, 10) }, 'Asia/Kolkata').toDate();
+    if (selectedMessage) {
+        const randomVideo = getRandom(videoLinks);
+        const formattedMessage = selectedMessage.message[0]
+            .replace("{currentTime}", currentTime)
+            .replace("{currentDate}", currentDate)
+            .replace("{currentDay}", currentDay);
 
-        schedule.scheduleJob(scheduledTime, () => {
-            global.data.allThreadID.forEach(threadID => {
-                api.sendMessage(message, threadID, (error) => {
-                    if (error) {
-                        console.error(`Failed to send message to ${threadID}:`, error);
-                    }
-                });
-            });
-        });
-    });
-};
+global.data.allThreadID.forEach(threadID =>
+            api.sendMessage({ body: formattedMessage, attachment: randomVideo }, threadID)
+        );
+    }
+}, 1000);
 
-module.exports.run = () => {
-    // This function can be left empty as the main logic is handled in onLoad
-};
+module.exports.run = () => {};
