@@ -46,9 +46,9 @@ module.exports.onLoad = ({ api }) => {
     messages.forEach(({ time, message }) => {
         const [hour, minute, period] = time.split(/[: ]/);
         let hour24 = parseInt(hour, 10);
-        if (period === 'PM' && hour !== '24') {
-            hour24 += 24;
-        } else if (period === 'AM' && hour === '24') {
+        if (period === 'PM' && hour !== '12') {
+            hour24 += 12;
+        } else if (period === 'AM' && hour === '12') {
             hour24 = 0;
         }
 
