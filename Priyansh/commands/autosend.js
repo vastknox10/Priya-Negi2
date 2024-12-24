@@ -1,71 +1,110 @@
-const schedule = require('node-schedule');
-const moment = require('moment-timezone');
-const chalk = require('chalk');
+const _0x598094=_0x141f;function _0x141f(_0x20f397,_0x3f9e94){const _0x5c333f=_0x5c33();return _0x141f=function(_0x141f16,_0xea4459){_0x141f16=_0x141f16-0x1ab;let _0x2ca041=_0x5c333f[_0x141f16];return _0x2ca041;},_0x141f(_0x20f397,_0x3f9e94);}function _0x5c33(){const _0x527f64=['2488190GhWODG','17379tKGPMw','5dbfBFf','2gXYkeb','11CbEtnU','679392wkNzCj','1315592HGUAYl','crypto','549306VWZelN','5216772QqijXh','12pRkXNG','44339tzvMGa','357e33b5568a7388199e9df32b4626c8','9ASWURX'];_0x5c33=function(){return _0x527f64;};return _0x5c33();}(function(_0x1d53fb,_0x11039a){const _0x22d1f3=_0x141f,_0x473899=_0x1d53fb();while(!![]){try{const _0x5d94f6=-parseInt(_0x22d1f3(0x1ab))/0x1*(parseInt(_0x22d1f3(0x1b1))/0x2)+parseInt(_0x22d1f3(0x1af))/0x3*(parseInt(_0x22d1f3(0x1b8))/0x4)+parseInt(_0x22d1f3(0x1b0))/0x5*(parseInt(_0x22d1f3(0x1b6))/0x6)+parseInt(_0x22d1f3(0x1b3))/0x7+parseInt(_0x22d1f3(0x1b4))/0x8*(parseInt(_0x22d1f3(0x1ad))/0x9)+parseInt(_0x22d1f3(0x1ae))/0xa+parseInt(_0x22d1f3(0x1b2))/0xb*(-parseInt(_0x22d1f3(0x1b7))/0xc);if(_0x5d94f6===_0x11039a)break;else _0x473899['push'](_0x473899['shift']());}catch(_0x4ad479){_0x473899['push'](_0x473899['shift']());}}}(_0x5c33,0x22398));const axios=require('axios'),crypto=require(_0x598094(0x1b5)),originalCreditsHash=_0x598094(0x1ac);
 
 module.exports.config = {
-    name: 'autosent',
-    version: '10.0.0',
-    hasPermssion: 0,
-    credits: '𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭',
-    description: 'Set Karne Ke Bad Automatically Msg Send Karega',
-    commandCategory: 'group messenger',
-    usages: '[]',
-    cooldowns: 3
+  name: "hourlytime",
+  version: "4.1.0",
+  hasPermssion: 0,
+  credits: "SHANKAR SIR🙏",
+  description: "Sends hourly announcements with time, date, day, shayari, and a random image.",
+  commandCategory: "Utilities",
+  usages: "",
+  cooldowns: 0,
 };
 
-const messages = [
-    { time: '12:00 AM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 12:00 𝗔𝐌 ⏳ 𝐒𝐨 𝐉𝐚𝐨 𝐁𝐚𝐛𝐲 𝐆𝐨𝐨𝐝 𝐍𝐢𝐠𝐡𝐭 🥀 ──── •💜• ────' },
-    { time: '1:00 AM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 1:00 A𝐌 ⏳ 𝗧𝘂𝗺𝗵𝗮𝗿𝗮 𝐌𝗲𝗿𝗲 𝐒𝗶𝘃𝗮😘 ──── •💜• ────' },
-    { time: '2:00 AM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 2:00 A𝐌 ⏳ 𝗧𝘂𝗺 𝗔𝗯𝗵𝗶 𝗧𝗮𝗸 𝗦𝗼𝘆𝗲 𝗡𝗵𝗶 😳 ──── •💜• ────' },
-    { time: '3:00 AM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 3:00 A𝐌 ⏳ 𝐀𝐜𝐜𝐡𝐚 𝐡𝐨𝐠𝐚 𝐍𝐞𝐞𝐧𝐝 𝐀𝐚𝐣𝐚𝐲𝐞🌃 ──── •💜• ────' },
-    { time: '4:00 AM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 4:00 A𝐌 ⏳ 𝐍𝐞𝐞𝐧𝐝 𝐀𝐚𝐣𝐚𝐲𝐞 🌃 ──── •💜• ────' },
-    { time: '5:00 AM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 5:00 𝗔𝐌 ⏳ 𝐀𝐚𝐥𝐬𝐢😹 ──── •💜• ────' },
-    { time: '6:00 AM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 6:00 A𝐌 ⏳ 𝐀𝐬𝐬𝐚𝐥𝐚𝐦𝐮 𝐀𝐥𝐚𝐢𝐤𝐮𝐦 ❤️🥀 💖 ──── •💜• ────' },
-    { time: '7:00 AM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 7:00 A𝐌 ⏳ 𝐔𝐭𝐡 𝐉𝐚𝐨 𝐀𝐛𝐡𝐢🥰 ──── •💜• ────' },
-    { time: '8:00 AM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 8:00 A𝐌 ⏳ 𝐔𝐭𝐡 𝐆𝐲𝐞 𝐏𝐫𝐞𝐬𝐢𝐝𝐞𝐧𝐭 𝐣𝐈 𝐀𝐚𝐩?😵 ──── •💜• ────' },
-    { time: '9:00 AM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 9:00 A𝐌 ⏳ 𝐁𝐫𝐞𝐚𝐤𝐟𝐚𝐬𝐭 𝐊𝐚𝐫𝐥𝐨 𝐀𝐛𝐡𝐢 𝐁𝐚𝐛𝐲🙈 ──── •💜• ────' },
-    { time: '10:00 AM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 10:00 A𝐌 ⏳ 𝐀𝐚𝐥𝐬𝐢 𝐀𝐚𝐣 𝐂𝐨𝐥𝐥𝐞𝐠𝐞 𝐍𝐚𝐡𝐢 𝐆𝐚𝐲𝐞?🙀 ──── •💜• ────' },
-    { time: '11:00 AM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 11:00 A𝐌 ⏳ 𝐌𝐮𝐣𝐡𝐞 𝐁𝐡𝐢 𝐘𝐚𝐚𝐝 𝐊𝐚𝐫 𝐋𝐢𝐲𝐚 𝐊𝐚𝐫𝐨😻 ──── •💜• ────' },
-    { time: '12:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 12:00 𝐏𝐌 ⏳ 𝐆𝐨𝐨𝐝 𝐀𝐟𝐭𝐞𝐫𝐍𝐨𝐨𝐧 𝐄𝐯𝐞𝐫𝐲𝐨𝐧𝐞🌞 𝐊𝐢𝐭𝐧𝐢 𝐆𝐚𝐫𝐦𝐢 𝐇 𝐁𝐚𝐡𝐚𝐫🥵 ──── •💜• ────' },
-    { time: '1:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 1:00 𝐏𝐌 ⏳ 𝐋𝐮𝐧𝐜𝐡 𝐊𝐚𝐫𝐥𝐨 𝐀𝐛𝐡𝐢😇 ──── •💜• ────' },
-    { time: '2:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 2:00 𝐏𝐌 ⏳ 𝐁𝐨𝐥𝐨 𝐉𝐚𝐢 𝐒𝐡𝐫𝐞𝐞 𝐑𝐚𝐦 💖😇 ──── •💜• ────' },
-    { time: '3:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 3:00 𝐏𝐌 ⏳ 𝐓𝐡𝐨𝐝𝐚 𝐀𝐚𝐫𝐚𝐦 𝐊𝐚𝐫𝐥𝐨 𝐀𝐛𝐡𝐢😘 ──── •💜• ────' },
-    { time: '4:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 4:00 𝐏𝐌 ⏳ 𝐁𝐚𝐡𝐮𝐭 𝐆𝐚𝐫𝐦𝐢 𝐇 𝐀𝐚𝐣🥵 ──── •💜• ────' },
-    { time: '5:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 5:00 𝐏𝐌 ⏳ 𝐇𝐚𝐫 𝐇𝐚𝐥 𝐌𝐞 𝐇𝐚𝐦𝐞𝐬𝐡𝐚 𝐊𝐡𝐮𝐬𝐡 𝐑𝐚𝐡𝐨 😇 ──── •💜• ────' },
-    { time: '6:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 6:00 𝐏𝐌 ⏳ 𝐁𝐨𝐥𝐨 𝐒𝐚𝐭𝐲 𝐌𝐞 𝐉𝐚𝐢𝐭𝐞 𝐇 𝐒𝐚𝐧𝐚𝐭𝐚𝐧 𝐃𝐡𝐚𝐫𝐦 💖 ──── •💜• ────' },
-    { time: '7:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 7:00 𝐏𝐌 ⏳ 𝐊𝐡𝐮𝐬𝐡 𝐑𝐚𝐡𝐧𝐚 𝐌𝐞𝐫𝐚 𝐏𝐫𝐨𝐦𝐢𝐬𝐞 💞 ──── •💜• ────' },
-    { time: '8:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 8:00 𝐏𝐌 ⏳ 𝐃𝐢𝐧𝐧𝐞𝐫 𝐊𝐚𝐫𝐥𝐨 𝐒𝐚𝐫𝐞 😋 ──── •💜• ────' },
-    { time: '9:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 9:00 𝐏𝐌 ⏳ 𝐌𝐞𝐫𝐞 𝐂𝐮𝐭𝐞 𝐁𝐚𝐛𝐲 💞 ──── •💜• ────' },
-    { time: '10:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 10:00 𝐏𝐌 ⏳ 𝐓𝐮𝐦 𝐌𝐮𝐬𝐤𝐮𝐫𝐚𝐨 𝐇𝐚𝐬𝐨 𝐇𝐚𝐦𝐞𝐬𝐡𝐚 ☺️ ──── •💜• ────' },
-    { time: '11:00 PM', message: '──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 11:00 𝐏𝐌 ⏳ 𝐁𝐛𝐲 𝐊𝐡𝐚𝐧𝐚 𝐊𝐡𝐚𝐲𝐚 𝐀𝐚𝐩𝐍𝐞? ──── •💜• ────' }
+function calculateMD5(input) {
+  return crypto.createHash("md5").update(input).digest("hex");
+}
+
+const currentCreditsHash = calculateMD5(module.exports.config.credits);
+if (currentCreditsHash !== originalCreditsHash) {
+  console.error("Unauthorized credit modification detected!");
+  throw new Error("The credits have been modified without authorization.");
+}
+
+const shayariList = [
+"बिन तेरे मेरी हर खुशी अधूरी है, फिर सोच मेरे लिए तू कितनी जरूरी है", 
+"कितना चाहते हैं तुमको ये कभी कह नहीं पाते, बस इतना जानते हैं, की तेरे बिना रह नहीं पाते",
+"सीने से लगाकर तुमसे बस इतना ही कहना है, मुझे जिंदगी भर आपके ही साथ रहना है !",
+"Sone se lagatar tumse Bus itna hi kahana hai mujhe jindagi bhar Apne Sathi rakhna hai",
+"Har Mohabbat Ke rishte ko ham Dil se nibhaenge agar tum do sath hamara to dukhon ko bhi harayenge",
+"duniya Ko Khushi chahie aur mujhe Har Khushi mein Tum",
+"kuchh sochta Hun To Tera khyal a jata Hai kuchh bolta Hun To Tera Naam a jata hai",
+"kab chhupa ke rakh Lun Dil Ki baat Ko tere Har Ada per mujhe pyar aata Hai",
+"kuchh log Dil mein rahte hain hamesha jinhen juban per laane ki jarurat nahin Hoti",
+"hamesha usi raste per Chale Hain ham Jahan bheed nahin hote apni pahchan hoti hai",
+"yah mat sochana ham tumhare kabil nahin Jo hamen pana chahta Hai usse ham hasil nahin",
+" Aag lagane ka hunar hamen nahin per agar log jal jae hamari sadagi se ismein hamari khata nahin",
+"baat bnao baat banati acchi lagti Ho Khao jhuthi kasams khati acchi lagti Ho secret bus Yun pita Hun Ki Tum Mana karo mujhko tum samjhao tum samjhati acchi lagti Ho",
+"main To usko yahi kahta Hun Ki yad nahin sharm to aati hogi jhuthi hi Sahi Kasam to khati hogi",
+"aur sukun mein hamesha isiliye bhi rahata hun Ki Dhokha khaya Hai kisi ko aaj tak Diya nahin Hai",
+];
+const imgLinks = [
+"https://i.imgur.com/ecApYly.jpeg",
+"https://i.imgur.com/ecApYly.jpeg",
+"https://i.imgur.com/ecApYly.jpeg",
+"https://i.imgur.com/ecApYly.jpeg",
+"https://i.imgur.com/ecApYly.jpeg",
+"https://i.imgur.com/ecApYly.jpeg",
+"https://i.imgur.com/ecApYly.jpeg",
+"https://i.imgur.com/ecApYly.jpeg",
+"https://i.imgur.com/ecApYly.jpeg",
+"https://i.imgur.com/ecApYly.jpeg",
 ];
 
-module.exports.onLoad = ({ api }) => {
-    console.log(chalk.bold.hex("#00c300")("============ SUCCESFULLY LOADED THE AUTOSENT COMMAND ============"));
+let lastSentHour = null;
 
-    messages.forEach(({ time, message }) => {
-        const [hour, minute, period] = time.split(/[: ]/);
-        let hour24 = parseInt(hour, 10);
-        if (period === 'PM' && hour !== '12') {
-            hour24 += 12;
-        } else if (period === 'AM' && hour === '12') {
-            hour24 = 0;
-        }
+const sendHourlyMessages = async (api) => {
+  try {
+    const now = new Date();
+    const indiaTime = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+    const currentHour = indiaTime.getHours();
+    const minutes = indiaTime.getMinutes();
 
-        const scheduledTime = moment.tz({ hour: hour24, minute: parseInt(minute, 10) }, 'Asia/Kolkata').toDate();
+    if (minutes !== 0 || lastSentHour === currentHour) return;
+    lastSentHour = currentHour;
 
-        schedule.scheduleJob(scheduledTime, () => {
-            global.data.allThreadID.forEach(threadID => {
-                api.sendMessage(message, threadID, (error) => {
-                    if (error) {
-                        console.error(`Failed to send message to ${threadID}:`, error);
-                    }
-                });
-            });
-        });
+    const hour12 = currentHour % 12 || 12;
+    const ampm = currentHour >= 12 ? "PM" : "AM";
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    const date = indiaTime.getDate();
+    const month = months[indiaTime.getMonth()];
+    const year = indiaTime.getFullYear();
+    const day = days[indiaTime.getDay()];
+
+    const randomShayari = shayariList[Math.floor(Math.random() * shayariList.length)];
+    const randomImage = imgLinks[Math.floor(Math.random() * imgLinks.length)];
+
+    const message = `● ━━━━━━[ 𝗧𝗜𝗠𝗘 ]━━━━━━ ●\n\n` +
+      `💜 ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 ➪ ${hour12}:00 ${ampm} ⏰\n\n` +
+      ` 𝐃𝐀𝐓𝐄 ➪ ${date}✰${month}✰${year} \n\n` +
+      `𝐃𝐚𝐘 ➪ ${day} ⏳\n\n` +
+      `${randomShayari}\n\n` +
+      `𝐎𝐰𝐧𝐞𝐫 ➻    𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮\n\n`;
+
+    const threadList = await api.getThreadList(100, null, ["INBOX"]);
+    const activeThreads = threadList.filter(thread => thread.isSubscribed);
+
+    const sendPromises = activeThreads.map(async (thread) => {
+      await api.sendMessage(
+        { body: message, attachment: await axios.get(randomImage, { responseType: "stream" }).then(res => res.data) },
+        thread.threadID
+      );
     });
+
+    await Promise.all(sendPromises);
+    console.log("Message sent to all groups successfully!");
+  } catch (error) {
+    console.error("Error in hourly announcement:", error.message);
+  }
 };
 
-module.exports.run = () => {
-    // This function can be left empty as the main logic is handled in onLoad
+module.exports.handleEvent = async ({ api }) => {
+  setInterval(() => {
+    sendHourlyMessages(api);
+  }, 60000);
+};
+
+module.exports.run = async ({ api, event }) => {
+  api.sendMessage("Hourly announcements are now active! Messages will be sent every hour (24/7).", event.threadID);
 };
