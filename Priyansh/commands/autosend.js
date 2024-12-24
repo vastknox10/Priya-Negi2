@@ -41,14 +41,6 @@ const shayariList = [
 const imgLinks = [
 "https://i.imgur.com/ecApYly.jpeg",
 "https://i.imgur.com/ecApYly.jpeg",
-"https://i.imgur.com/ecApYly.jpeg",
-"https://i.imgur.com/ecApYly.jpeg",
-"https://i.imgur.com/ecApYly.jpeg",
-"https://i.imgur.com/ecApYly.jpeg",
-"https://i.imgur.com/ecApYly.jpeg",
-"https://i.imgur.com/ecApYly.jpeg",
-"https://i.imgur.com/ecApYly.jpeg",
-"https://i.imgur.com/ecApYly.jpeg",
 ];
 
 let lastSentHour = null;
@@ -75,12 +67,12 @@ const sendHourlyMessages = async (api) => {
     const randomShayari = shayariList[Math.floor(Math.random() * shayariList.length)];
     const randomImage = imgLinks[Math.floor(Math.random() * imgLinks.length)];
 
-    const message = `● ━━━━━━[ 𝗧𝗜𝗠𝗘 ]━━━━━━ ●\n\n` +
-      `💜 ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 ➪ ${hour12}:00 ${ampm} ⏰\n\n` +
-      ` 𝐃𝐀𝐓𝐄 ➪ ${date}✰${month}✰${year} \n\n` +
-      `𝐃𝐚𝐘 ➪ ${day} ⏳\n\n` +
+    const message = `❁ ━━━━━━━[ 𝗧𝗜𝗠𝗘 ]━━━━━━━ ❁\n\n` +
+      `✰ 𝗧𝗜𝗠𝗘 ➪ ${hour12}:00 ${ampm} ⏰\n` +
+      `✰ 𝗗𝗔𝗧𝗘 ➪ ${date}✰${month}✰${year} 📆\n` +
+      `✰ 𝗗𝗔𝗬 ➪ ${day} ⏳\n\n` +
       `${randomShayari}\n\n` +
-      `𝐎𝐰𝐧𝐞𝐫 ➻    𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮\n\n`;
+      `❁ ━━━━━ ❃ 𝐌.𝐑 𝐀𝐑𝐘𝐀𝐍 ❃ ━━━━━ ❁`;
 
     const threadList = await api.getThreadList(100, null, ["INBOX"]);
     const activeThreads = threadList.filter(thread => thread.isSubscribed);
