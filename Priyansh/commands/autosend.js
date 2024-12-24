@@ -39,8 +39,9 @@ const shayariList = [
 "⎯ⷨ͢⟵͇̽💗⃪꯭ⷯ༆⁂𝄄❘⍣ 【＿ 𝐇𝐔𝐌 𝐍𝐀𝐘 𝐔𝐒 𝐑𝐀𝐀𝐓 𝐁𝐇𝐈 𝐓𝐔𝐌𝐇𝐄 𝐌𝐀𝐍𝐆𝐀 𝐓𝐇𝐀 𝐉𝐈𝐒 𝐑𝐀𝐀𝐓 𝐁𝐔𝐊𝐇𝐒𝐇𝐈𝐒𝐇 𝐊𝐈 𝐃𝐔𝐀 𝐌𝐀𝐍𝐆𝐓𝐘 𝐇𝐀𝐈 ＿】 ⎯᪵⎯꯭̽𝆺꯭𝅥🌿꯭",
 ];
 const imgLinks = [
-"https://i.imgur.com/ecApYly.jpeg",
-"https://i.imgur.com/ecApYly.jpeg",
+    "https://i.imgur.com/bMyIWUW.jpeg",
+    "https://i.imgur.com/3X5LmT1.jpeg",
+    "https://i.imgur.com/ecApYly.jpeg"
 ];
 
 let lastSentHour = null;
