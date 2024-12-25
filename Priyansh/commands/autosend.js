@@ -1,7 +1,7 @@
 const axios = require("axios");
 
 module.exports.config = {
-  name: "hourlytime",
+  name: "timer5",
   version: "4.1.1",
   hasPermssion: 0,
   credits: "SHANKAR",
