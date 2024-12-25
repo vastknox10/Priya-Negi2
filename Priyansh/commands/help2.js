@@ -63,7 +63,7 @@ module.exports. run = function({ api, event, args, getText }) {
     i = startSlice;
     const returnArray = arrayInfo.slice(startSlice, startSlice + numberOfOnePage);
 
-    for (let item of returnArray) msg += `😈  [${++i}] 【＿ ${prefix}${item} ＿】 \n`;
+    for (let item of returnArray) msg += `😈  [${++i}] 【＿   ${prefix}${item}   ＿】 \n`;
 
 
     const siu = `𝐎𝐰𝐧𝐞𝐫 ➻    𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮\n\n● ────────────────── ●\n\n𝐓𝐨𝐓𝐚𝐋 𝐂𝐨𝐦𝐌𝐚𝐧𝐃 𝐋𝐢𝐬𝐓\n\n● ────────────────── ●`;
