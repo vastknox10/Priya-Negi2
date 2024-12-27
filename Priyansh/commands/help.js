@@ -103,7 +103,7 @@ const first = numberOfOnePage * page - numberOfOnePage;
     const helpView = arrayInfo.slice(first, first + numberOfOnePage);
 
 
-    for (let cmds of helpView) msg += `「${++i}」😈${global.config.PREFIX}${cmds}\n\n`;
+    for (let cmds of helpView) msg += `😈  「${++i}」${global.config.PREFIX}${cmds}\n\n`;
 
     const siu = `𝐎𝐰𝐧𝐞𝐫 ➻   𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮`;
 
