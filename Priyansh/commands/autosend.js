@@ -43,12 +43,12 @@ const messages = [
 ];
 
 const imageLinks = [
-"https://i.imgur.com/EDZwkWW.jpeg",
-"https://i.imgur.com/eeFzTPW.jpeg",
-"https://i.imgur.com/48ccAud.jpeg",
-"https://i.imgur.com/z8pOswn.jpeg",
-"https://i.imgur.com/2onEkj3.jpeg",
-"https://i.imgur.com/tzb574S.jpeg",
+"https://i.imgur.com/VIUg4zO.jpeg",
+"https://i.imgur.com/5Tb36SA.jpeg",
+"https://i.imgur.com/mQhRxAX.jpeg",
+"https://i.imgur.com/7VzPqWq.jpeg",
+"https://i.imgur.com/90nMiHd.jpeg",
+"https://i.imgur.com/WNomkuG.jpeg",
 ];
 
 module.exports.onLoad = ({ api }) => {
