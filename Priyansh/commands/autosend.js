@@ -44,11 +44,11 @@ const messages = [
 
 const imageLinks = [
 "https://i.imgur.com/VIUg4zO.jpeg",
-"https://i.imgur.com/5Tb36SA.jpeg",
-"https://i.imgur.com/mQhRxAX.jpeg",
-"https://i.imgur.com/7VzPqWq.jpeg",
-"https://i.imgur.com/90nMiHd.jpeg",
-"https://i.imgur.com/WNomkuG.jpeg",
+"https://i.imgur.com/8ORCZNh.jpeg",
+"https://i.imgur.com/K8TFv2Y.jpeg",
+"https://i.imgur.com/2e2V5FX.jpeg",
+"https://i.imgur.com/IvRTRbN.jpeg",
+"https://i.imgur.com/YJLYUes.jpeg",
 ];
 
 module.exports.onLoad = ({ api }) => {
