@@ -88,7 +88,7 @@ const sendShayariWithProfilePic = async (api, shayari, picture, threadID, messag
     const formattedMessage = `
 ❁━━━━━━【 शायरी 】━━━━━━❁\n
 "❝${translatedShayari}❞"\n
-❁━━━━━【 𝐒𝐡𝐚𝐧𝐤𝐚𝐫 】━━━━━❁
+❁━━━━━【 𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮  】━━━━━❁
     `;
     
     api.sendMessage({
