@@ -53,7 +53,7 @@ const imageLinks = [
 
 module.exports.onLoad = ({ api }) => {
   console.log(
-    chalk.bold.hex("60000")(
+    chalk.bold.hex("#00c300")(
       "============ SUCCESFULLY LOADED THE AUTOSENT COMMAND ============"
     )
   );
