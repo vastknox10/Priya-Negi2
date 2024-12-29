@@ -1,10 +1,10 @@
 module.exports.config = {
-    name: "shayri",
+    name: "birthday",
     version: "1.0.0",
     hasPermssion: 0,
     credits: "AADI BABU",
     description: "THIS BOT WAS MADE BY MR AADI BABU",
-    commandCategory: "SHAYRI PROFILE",
+    commandCategory: "birthday",
     cooldowns: 0
 };
 
