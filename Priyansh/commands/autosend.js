@@ -1,18 +1,16 @@
-const schedule = require("node-schedule");
-const moment = require("moment-timezone");
-const chalk = require("chalk");
-const fs = require("fs");
-const request = require("request");
+const schedule = require('node-schedule');
+const moment = require('moment-timezone');
+const chalk = require('chalk');
 
 module.exports.config = {
-  name: "autosent",
-  version: "10.0.0",
-  hasPermssion: 0,
-  credits: "ARIF BABU",
-  description: "MADE BY ARIF BABU",
-  commandCategory: "group messenger",
-  usages: "[]",
-  cooldowns: 3,
+    name: 'autosent',
+    version: '10.0.0',
+    hasPermssion: 0,
+    credits: '𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭',
+    description: 'Set Karne Ke Bad Automatically Msg Send Karega',
+    commandCategory: 'group messenger',
+    usages: '[]',
+    cooldowns: 3
 };
 
 const messages = [
@@ -42,72 +40,32 @@ const messages = [
     { time: '11:00 PM', message: '● ━━━━━━━[ 𝗧𝗜𝗠𝗘 ]━━━━━━━ ●\n\n──── •💜• ──── 𝐍𝐨𝐰 𝐢𝐭𝐬 𝐭𝐢𝐦𝐞 11:00 𝐏𝐌 ⏳ 𝐁𝐛𝐲 𝐊𝐡𝐚𝐧𝐚 𝐊𝐡𝐚𝐲𝐚 𝐀𝐚𝐩𝐍𝐞? ──── •💜• ────\n\n● ━━━━━ ❃ 𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 ❃ ━━━━━ ●\n\n' }
 ];
 
-const imageLinks = [
-"https://i.imgur.com/k8UhKzZ.gif",
-"https://i.imgur.com/F56j5k5.gif",
-"https://i.imgur.com/BoAhWtB.gif",
-"https://i.imgur.com/X3DxmDn.gif",
-"https://i.imgur.com/BPucNlJ.gif",
-"https://i.imgur.com/Rv2YxnR.gif",
-];
-
 module.exports.onLoad = ({ api }) => {
-  console.log(
-    chalk.bold.hex("#00c300")(
-      "============ SUCCESFULLY LOADED THE AUTOSENT COMMAND ============"
-    )
-  );
+    console.log(chalk.bold.hex("#00c300")("============ SUCCESFULLY LOADED THE AUTOSENT COMMAND ============"));
 
-  messages.forEach(({ time, message }) => {
-    const [hour, minute, period] = time.split(/[: ]/);
-    let hour24 = parseInt(hour, 10);
-    if (period === "PM" && hour !== "12") {
-      hour24 += 12;
-    } else if (period === "AM" && hour === "12") {
-      hour24 = 0;
-    }
+    messages.forEach(({ time, message }) => {
+        const [hour, minute, period] = time.split(/[: ]/);
+        let hour24 = parseInt(hour, 10);
+        if (period === 'PM' && hour !== '12') {
+            hour24 += 12;
+        } else if (period === 'AM' && hour === '12') {
+            hour24 = 0;
+        }
 
-    const scheduledTime = moment
-      .tz({ hour: hour24, minute: parseInt(minute, 10) }, "Asia/Kolkata")
-      .toDate();
+        const scheduledTime = moment.tz({ hour: hour24, minute: parseInt(minute, 10) }, 'Asia/Kolkata').toDate();
 
-    schedule.scheduleJob(scheduledTime, () => {
-      if (!global.data || !global.data.allThreadID) {
-        console.error("Error: `global.data.allThreadID` is not defined.");
-        return;
-      }
-
-      global.data.allThreadID.forEach((threadID) => {
-        // Select a random image link
-        const randomImage =
-          imageLinks[Math.floor(Math.random() * imageLinks.length)];
-
-        // File path to save the image temporarily
-        const filePath = `${__dirname}/cache/temp_image.jpg`;
-
-        // Download the image
-        request(randomImage)
-          .pipe(fs.createWriteStream(filePath))
-          .on("close", () => {
-            // Send the message with the downloaded image
-            api.sendMessage(
-              {
-                body: message,
-                attachment: fs.createReadStream(filePath),
-              },
-              threadID,
-              (error) => {
-                if (error) {
-                  console.error(`Failed to send message to ${threadID}:`, error);
-                }
-              }
-            );
-          });
-      });
+        schedule.scheduleJob(scheduledTime, () => {
+            global.data.allThreadID.forEach(threadID => {
+                api.sendMessage(message, threadID, (error) => {
+                    if (error) {
+                        console.error(`Failed to send message to ${threadID}:`, error);
+                    }
+                });
+            });
+        });
     });
-  });
 };
 
 module.exports.run = () => {
-  // This function is intentionally left empty
+    // This function can be left empty as the main logic is handled in onLoad
 };
