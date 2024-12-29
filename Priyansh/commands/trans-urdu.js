@@ -1,3 +1,7 @@
+const axios = require('axios');
+const fs = require('fs-extra');
+const request = require('request');
+
 module.exports.config = {
 	name: "urdu",
 	version: "1.0.1",
