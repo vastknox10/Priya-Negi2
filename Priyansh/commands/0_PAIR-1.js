@@ -2,11 +2,11 @@ module.exports.config = {
   name: "pair",
   version: "1.0.0", 
   hasPermssion: 0,
-  credits: "AADI BABU",
-  description: "THIS BOT IS MR AADI SHARMA",
-  commandCategory: "COUPLE LOVE PAIRING", 
+  credits: "Anup Kumar",
+  description: "Pairing",
+  commandCategory: "Love", 
   usages: "pair", 
-  cooldowns: 15
+  cooldowns: 6
 };
 module.exports.run = async function({ api, event,Threads, Users }) {
         const axios = global.nodemodule["axios"];
@@ -27,7 +27,7 @@ module.exports.run = async function({ api, event,Threads, Users }) {
         let Avatar = (await axios.get( `https://graph.facebook.com/${event.senderID}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" } )).data; 
             fs.writeFileSync( __dirname + "/cache/avt.png", Buffer.from(Avatar, "utf-8") );
 
-        let gifLove = (await axios.get( `https://i.imgur.com/MBETCWy.gif`, { responseType: "arraybuffer" } )).data; 
+        let gifLove = (await axios.get( `https://i.ibb.co/fXfK2m4/Pair-Aasif.gif`, { responseType: "arraybuffer" } )).data; 
             fs.writeFileSync( __dirname + "/cache/giflove.png", Buffer.from(gifLove, "utf-8") );
 
         let Avatar2 = (await axios.get( `https://graph.facebook.com/${id}/picture?width=512&height=512&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" } )).data;
@@ -39,10 +39,6 @@ module.exports.run = async function({ api, event,Threads, Users }) {
               imglove.push(fs.createReadStream(__dirname + "/cache/giflove.png"));
               imglove.push(fs.createReadStream(__dirname + "/cache/avt2.png"));
 
-        var msg = {body: `🌸=== 𝐎𝐰𝐧𝐞𝐫 ➻    𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮\n\n< ────────────────── >\n\n[•||•●•||•┼┼──🌸,,💟..𝐀𝐧𝐤𝐡𝐨 𝐦𝐞 𝐛𝐚𝐬𝐚𝐥𝐮 𝐭𝐮𝐣𝐡𝐤𝐨. 💟 ...💗 𝐒𝐡𝐞𝐞𝐬𝐡𝐞 𝐦𝐞 𝐭𝐞𝐫𝐚 𝐝𝐞𝐞𝐝𝐚𝐫 𝐡𝐨...💗 🥰•||•🐬•||•]]
-🌹✦━━━━━🌹━━🌹━━━━━✦🌹
-\n[•||•●•||•┼┼──🌸🌿 𝐀𝐤 𝐰𝐚𝐪𝐭 𝐞𝐬𝐚 𝐚𝐲𝐞 𝐣𝐢𝐧𝐝𝐠𝐢 𝐦𝐞 𝐤𝐢...💚 ,💜.. 𝐭𝐮𝐣𝐡𝐤𝐨 𝐯 𝐡𝐮𝐦𝐬𝐞 𝐩𝐲𝐚𝐫 𝐡𝐨 ..💜 ♥️ •||•🌸•||• ]]
-🌹✦━━━━━🌹━━🌹━━━━━✦🌹
-\nAap DonN Ka PyaR👉 ${tle} HaiN 🤐👈\n`+namee+" "+"♥️"+" "+name, mentions: arraytag, attachment: imglove}
+        var msg = {body: `  『 🌼•°𝐏𝐀𝐈𝐑𝐈𝐍𝐆°•🌼 』\n     ︙︶🄲🄾🄽🄶🅁🄰🅃🅂︶︙\n     ะ๏ຼົะ一一一一๏ຼົ一一一一ะ๏ຼົะ\n       💕Double ratio: ${tle}%\n     ะ๏ຼົะ一一一一๏ຼົ一一一一ะ๏ຼົะ\n\n     `     +namee+"\n           "+"💓✨️"+"\n   "+name, mentions: arraytag, attachment: imglove}
         return api.sendMessage(msg, event.threadID, event.messageID)
 }
