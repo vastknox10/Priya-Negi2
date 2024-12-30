@@ -1,20 +1,14 @@
-const axios = require('axios');
-const fs = require('fs-extra');
-const request = require('request');
-
+const fs = global.nodemodule["fs-extra"];
 module.exports.config = {
-	name: "urdu",
-	version: "1.0.1",
-	hasPermssion: 0,
-	credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
-	description: "Text translation",
-	commandCategory: "noPrefix",
-	usages: "[Text]",
-	cooldowns: 5,
-	dependencies: {
-		"request":  ""
-	}
-};
+  name: "urdu",
+  version: "1.0.1",
+  hasPermssion: 0,
+  credits: "AADI BABU",
+  description: "aadi bot",
+  commandCategory: "Noprefix",
+  usages: "noprefix",
+  cooldowns: 5,
+}
 
 module.exports.run = async ({ api, event, args }) => {
 	const request = global.nodemodule["request"];
