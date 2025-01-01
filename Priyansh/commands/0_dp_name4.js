@@ -2,7 +2,7 @@ module.exports.config = {
   name: "dpname4",
   version: "1.0.0",
   hasPermssion: 0,
-  credits: "PREM BABU",
+  credits: "𝐏𝐑𝐈𝐘𝐀𝐍𝐒𝐇𝐈 𝐊𝐀𝐔𝐑",
   description: "dpname maker",
   commandCategory: "dpname",
   usages: "text 1 + text 2",
@@ -48,7 +48,7 @@ module.exports.run = async function ({ api, event, args, Users }) {
   let pathImg = __dirname + `/cache/drake.png`;
   const text = args.join(" ").trim().replace(/\s+/g, " ").replace(/(\s+\=)/g, "+").replace(/\|\s+/g, "+").split("+");
   let getImage = (
-    await axios.get(encodeURI(`https://i.imgur.com/nJPIeQS.jpg`), {
+    await axios.get(encodeURI(`https://i.imgur.com/czxzynv.jpeg`), {
       responseType: "arraybuffer",
     })
   ).data;
@@ -64,13 +64,13 @@ if(!fs.existsSync(__dirname+'/cache/SVN-Arial 2.ttf')) {
   Canvas.registerFont(__dirname+`/cache/SVN-Arial 2.ttf`, {
         family: "SVN-Arial 2"
     });
-  ctx.font = "30px SVN-Arial 2";
+  ctx.font = "40px SVN-Arial 2";
   ctx.fillStyle = "#000000";
   ctx.textAlign = "center";
   const line = await this.wrapText(ctx, text[0], 400);
   const lines = await this.wrapText(ctx, text[1], 464);
-  ctx.fillText(line.join("\n"), 360, 67)
-  ctx.fillText(lines.join("\n"), 360, 197)
+  ctx.fillText(line.join("\n"), 230, 282)
+  ctx.fillText(lines.join("\n"), 480, 650)
   ctx.beginPath();
   const imageBuffer = canvas.toBuffer();
   fs.writeFileSync(pathImg, imageBuffer);
