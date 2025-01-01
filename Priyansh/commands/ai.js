@@ -3,8 +3,8 @@ module.exports.config = {
     name: "ai",
     version: "1.0.0",
     hasPermssion: 0,
-    credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
-    description: "BlackBoxAi by Priyansh",
+    credits: "Priyansh Rajput",
+    description: "bing by Microsoft",
     commandCategory: "ai",
     usages: "[ask]",
     cooldowns: 2,
@@ -13,23 +13,19 @@ module.exports.config = {
     }
 };
 
-module.exports.run = async function ({ api, event, args, Users }) {
+module.exports.run = async function ({ api, event, args }) {
 
   const { threadID, messageID } = event;
 
-  const query = encodeURIComponent(args.join(" "));
-
-  var name = await Users.getNameUser(event.senderID);
+  const prompt = encodeURIComponent(args.join(" "));
 
   if (!args[0]) return api.sendMessage("Please type a message...", threadID, messageID );
-  
-  api.sendMessage("Searching for an answer, please wait...", threadID, messageID);
 
   try{
 
     api.setMessageReaction("⌛", event.messageID, () => { }, true);
 
-    const res = await axios.get(`https://blackboxai-tlh1.onrender.com/api/blackboxai?query=${encodeURIComponent(query)}`);
+    const res = await axios.get(`https://priyansh-ai.onrender.com/api/blackboxai?query=${encodeURIComponent(prompt)}&apikey=priyansh-here`);
 
     const data = res.data.priyansh;
 
@@ -38,7 +34,7 @@ module.exports.run = async function ({ api, event, args, Users }) {
     api.setMessageReaction("✅", event.messageID, () => { }, true);
 }
   catch (error) {
-    console.error('Error fetching package.json:', error);
+    console.error('Error fetching data', error);
   api.sendMessage("An error occurred while fetching data. Please try again later.", event.threadID, event.messageID);
   }
 };
