@@ -1,36 +1,60 @@
+const axios = require("axios");
+
 module.exports.config = {
-    name: "imgsearch",
-    version: "1.0.0",
-    hasPermssion: 0,
-    credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
-    description: "Image Search",
-    commandCategory: "Công Cụ",
-    usages: "[Text]",
-    cooldowns: 0,
+  name: "pinterest",
+  version: "1.0.0",
+  hasPermission: 0,
+  credits: "SHANKAR SIR",
+  description: "Search and send images from Pinterest based on user query.",
+  commandCategory: "Utility",
+  usages: "[keyword]",
+  cooldowns: 5,
 };
-module.exports.run = async function({ api, event, args }) {
-    const axios = require("axios");
-    const fs = require("fs-extra");
-    const request = require("request");
-    const keySearch = args.join(" ");
-    if(keySearch.includes("-") == false) return api.sendMessage('Please enter in the format: keyword to search - number of photos to search', event.threadID, event.messageID)
-    const keySearchs = keySearch.substr(0, keySearch.indexOf('-'))
-    const numberSearch = keySearch.split("-").pop() || 6
-    const res = await axios.get(`https://api.ndtmint.repl.co/pinterest?search=${encodeURIComponent(keySearchs)}`);
-    const data = res.data.data;
-    var num = 0;
-    var imgData = [];
-    for (var i = 0; i < parseInt(numberSearch); i++) {
-      let path = __dirname + `/cache/${num+=1}.jpg`;
-      let getDown = (await axios.get(`${data[i]}`, { responseType: 'arraybuffer' })).data;
-      fs.writeFileSync(path, Buffer.from(getDown, 'utf-8'));
-      imgData.push(fs.createReadStream(__dirname + `/cache/${num}.jpg`));
+
+module.exports.run = async function ({ api, event, args }) {
+  const { threadID, messageID } = event;
+
+  // Check if user has provided a query
+  const query = args.join(" ");
+  if (!query) {
+    return api.sendMessage(
+      "❓ कृपया एक कीवर्ड प्रदान करें! उदाहरण: pinterest cat, pinterest flowers",
+      threadID,
+      messageID
+    );
+  }
+
+  // Call the API with the query
+  const apiURL = `https://shankar-sir-api.onrender.com/api/pinterest?text=${encodeURIComponent(query)}`;
+  try {
+    const response = await axios.get(apiURL);
+
+    // Check if API returned a valid response
+    if (response && response.data && response.data.data) {
+      const imageUrl = response.data.data; // API response contains the image URL
+
+      // Send the image
+      return api.sendMessage(
+        {
+          body: `🖼️ यहाँ आपकी छवि है: "${query}"`,
+          attachment: await global.utils.getStreamFromURL(imageUrl),
+        },
+        threadID,
+        messageID
+      );
+    } else {
+      return api.sendMessage(
+        "⚠️ माफ करें, कोई परिणाम नहीं मिला। कृपया कोई अन्य कीवर्ड आज़माएं।",
+        threadID,
+        messageID
+      );
     }
-    api.sendMessage({
-        attachment: imgData,
-        body: numberSearch + ' Keyword search results: '+ keySearchs
-    }, event.threadID, event.messageID)
-    for (let ii = 1; ii < parseInt(numberSearch); ii++) {
-        fs.unlinkSync(__dirname + `/cache/${ii}.jpg`)
-    }
+  } catch (error) {
+    console.error("API Error:", error.response ? error.response.data : error.message);
+    return api.sendMessage(
+      "❌ API से परिणाम प्राप्त करने में समस्या हुई। कृपया बाद में प्रयास करें।",
+      threadID,
+      messageID
+    );
+  }
 };
