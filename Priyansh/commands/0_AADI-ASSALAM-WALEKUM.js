@@ -3,7 +3,7 @@ module.exports.config = {
         name: "BYE",
     version: "1.1.1",
         hasPermssion: 0,
-        credits: "AADI BABU", 
+        credits: "AADI BABU",///don't change my Credit Coz i Edit 
         description: "THIS BOT IS BOT AADI BABU",
         commandCategory: "no prefix",
     cooldowns: 5, 
