@@ -1,6 +1,6 @@
 const axios = require("axios");
 const fs = require("fs-extra");
-const tempy = require('tempy');
+const path = require("path");
 
 module.exports.config = {
     name: "igautodownload",
@@ -25,36 +25,41 @@ module.exports.handleEvent = async function({ api, event }) {
                 // Use the provided API to fetch the video download link
                 const apiUrl = `https://priyansh-ai.onrender.com/reel?link=${encodeURIComponent(event.body)}`;
                 const response = await axios.get(apiUrl);
+                const downloadLink = response.data.downloadLink;
 
-                if (!response.data || !response.data.videoUrl) {
-                    return api.sendMessage("Failed to retrieve the video. Please check the link and try again.", event.threadID, event.messageID);
-                }
-
-                const hdLink = response.data.downloadLink;
-                const videoResponse = await axios.get(hdLink, { responseType: 'stream' });
-                const tempFilePath = tempy.file({ extension: 'mp4' });
-                const writer = fs.createWriteStream(tempFilePath);
-                videoResponse.data.pipe(writer);
-
-                writer.on('finish', async () => {
-                    const attachment = fs.createReadStream(tempFilePath);
-                    await api.sendMessage({
-                        attachment,
-                        body: "Here's the video you requested:"
-                    }, event.threadID, (err) => {
-                        if (err) console.error("Error sending message:", err);
-                    });
-                    fs.unlinkSync(tempFilePath);
-                });
-
-                writer.on('error', (err) => {
-                    console.error("Error writing file:", err);
-                    api.sendMessage("An error occurred while processing the video. Please try again later.", event.threadID, event.messageID);
-                });
-            } catch (error) {
-                console.error('Error downloading Instagram video:', error);
-                api.sendMessage("An error occurred while downloading the Instagram video. Please try again later.", event.threadID, event.messageID);
+            if (!downloadLink) {
+                return api.sendMessage("Failed to fetch the download link. Please check the video link or try again later.", event.threadID, event.messageID);
             }
+                  // Download the video
+                  const videoPath = path.resolve(__dirname, "tempVideo.mp4");
+                  const videoStream = await axios({
+                      url: downloadLink,
+                      method: "GET",
+                      responseType: "stream"
+                  });
+      
+                  videoStream.data.pipe(fs.createWriteStream(videoPath));
+      
+                  videoStream.data.on("end", async () => {
+                      // Send the video
+                      api.sendMessage({
+                          body: "𝐎𝐰𝐧𝐞𝐫 ➻    𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮ye rahi  downloaded apki Instagram video!",
+                          attachment: fs.createReadStream(videoPath)
+                      }, event.threadID, () => {
+                          // Delete the video after sending
+                          fs.unlinkSync(videoPath);
+                      }, event.messageID);
+                  });
+      
+                  videoStream.data.on("error", (err) => {
+                      console.error("Error downloading the video:", err);
+                      api.sendMessage("Failed to download the video. Please try again later.", event.threadID, event.messageID);
+                  });
+      
+              } catch (err) {
+                  console.error("Error:", err);
+                  return api.sendMessage("An error occurred while processing your request. Please try again later.", event.threadID, event.messageID);
+              }
         }
     }
 };
