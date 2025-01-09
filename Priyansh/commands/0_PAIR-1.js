@@ -77,9 +77,7 @@ module.exports. run = async function({ api, event, args, Users, Threads, Currenc
         var sex = await data[id].gender;
         var gender = sex == 2 ? "Male🧑" : sex == 1 ? "Female👩‍  " : "Tran Duc Bo";
 var one = senderID, two = id;
-    return makeImage({ one, two }).then(path => api.sendMessage({ body: `${namee}  💐❤️💐 ${name} \n ️💋😍__"TƏɽɪ Dʜαɖƙαŋ ┣𝐥ɪ ZɪŋɖαԌɪ Kα Kɪssα ┣𝐥𝙰ɪ MƏɽα"--🔐❤🥰🌎
-
-🫶🎻__"Tʋ ZɪŋɖαԌɪ Kα Eƙ A𝙰ʜαɱ ┣𝐥ɪssα ┣𝐥𝙰ɪ MƏɽα"--🎻🍒
-
-🌸💋__"--😘🍁The odds are: 〘${tle}〙`, mentions: arraytag, attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
+    return makeImage({ one, two }).then(path => api.sendMessage({ body: `${namee}  💐❤️💐 ${name} \n\n[•||•●•||•┼┼──🌸,,💟..𝐀𝐧𝐤𝐡𝐨 𝐦𝐞 𝐛𝐚𝐬𝐚𝐥𝐮 𝐭𝐮𝐣𝐡𝐤𝐨. 💟 ...💗 𝐒𝐡𝐞𝐞𝐬𝐡𝐞 𝐦𝐞 𝐭𝐞𝐫𝐚 𝐝𝐞𝐞𝐝𝐚𝐫 𝐡𝐨...💗 🥰•||•🐬•||•]]
+🌹✦━━━━━🌹━━🌹━━━━━✦🌹\n\n[•||•●•||•┼┼──🌸🌿 𝐀𝐤 𝐰𝐚𝐪𝐭 𝐞𝐬𝐚 𝐚𝐲𝐞 𝐣𝐢𝐧𝐝𝐠𝐢 𝐦𝐞 𝐤𝐢...💚 ,💜.. 𝐭𝐮𝐣𝐡𝐤𝐨 𝐯 𝐡𝐮𝐦𝐬𝐞 𝐩𝐲𝐚𝐫 𝐡𝐨 ..💜 ♥️✨ 𒁍आदि बाबू •||•🌸•||• ]]
+🌹✦━━━━━🌹━━🌹━━━━━✦🌹\n\n𝐎𝐰𝐧𝐞𝐫 ➻  🥀  𝐀𝐚𝐝𝐢 𝐛𝐚𝐛𝐮 🥀\n\n🌸💋__"--😘🍁The odds are: 〘${tle}〙`, mentions: arraytag, attachment: fs.createReadStream(path) }, threadID, () => fs.unlinkSync(path), messageID));
 }
