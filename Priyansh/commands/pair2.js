@@ -2,8 +2,8 @@ module.exports.config = {
         name: "pair2",
         version: "1.0.1",
         hasPermssion: 0,
-        credits: "LEGEND ARYAN",
-        description: "MADE BY LEGEND ARYAN",
+        credits: "LEGEND AADI",
+        description: "MADE BY LEGEND AADI",
         commandCategory: "Picture",
         cooldowns: 5,
         dependencies: {
