@@ -1,11 +1,11 @@
 module.exports.config = {
-  name: "pair",
+  name: "pair50",
   version: "1.0.0", 
   hasPermssion: 0,
   credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
   description: "0Pairing",
-  commandCategory: "Love", 
-  usages: "pair", 
+  commandCategory: "Love1", 
+  usages: "pair50", 
   cooldowns: 0
 };
 module.exports.run = async function({ api, event, args, Users, Threads, Currencies }) {
