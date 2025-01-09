@@ -18,7 +18,7 @@ module.exports.onLoad = async() => {
     const dirMaterial = __dirname + `/cache/canvas/`;
     const path = resolve(__dirname, 'cache/canvas', 'pairing.png1');
     if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
-    if (!existsSync(path)) await downloadFile("https://i.imgur.com/pK5qyhO.jpeg", path);
+    if (!existsSync(path)) await downloadFile("https://i.imgur.com/1q9PuPt.jpeg", path);
 }
 
 async function makeImage({ one, two }) {
@@ -41,7 +41,7 @@ async function makeImage({ one, two }) {
 
     let circleOne = await jimp.read(await circle(avatarOne));
     let circleTwo = await jimp.read(await circle(avatarTwo));
-    pairing_img.composite(circleOne.resize(258, 258), 115, 110).composite(circleTwo.resize(247, 247), 478, 115);
+    pairing_img.composite(circleOne.resize(221, 215), 8, 61).composite(circleTwo.resize(220, 210), 260, 75);
 
     let raw = await pairing_img.getBufferAsync("image/png");
 
