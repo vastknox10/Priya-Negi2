@@ -18,7 +18,7 @@ module.exports.onLoad = async() => {
     const dirMaterial = __dirname + `/cache/canvas/`;
     const path = resolve(__dirname, 'cache/canvas', 'pairing.png1');
     if (!existsSync(dirMaterial + "canvas")) mkdirSync(dirMaterial, { recursive: true });
-    if (!existsSync(path)) await downloadFile("https://i.imgur.com/lNTt1wa.jpeg", path);
+    if (!existsSync(path)) await downloadFile("https://i.imgur.com/m4f9AfH.jpeg", path);
 }
 
 async function makeImage({ one, two }) {
