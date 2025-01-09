@@ -1,16 +1,13 @@
 module.exports.config = {
-        name: "pair",
-        version: "1.0.1",
-        hasPermssion: 0,
-        credits: "LEGEND AADI",
-        description: "MADE BY LEGEND AADI",
-        commandCategory: "Picture",
-        cooldowns: 5,
-        dependencies: {
-        "axios": "",
-        "fs-extra": ""
-    }
-}
+  name: "pair",
+  version: "1.0.0", 
+  hasPermssion: 0,
+  credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭",
+  description: "0Pairing",
+  commandCategory: "Love", 
+  usages: "pair", 
+  cooldowns: 0
+};
 module.exports.onLoad = async() => {
     const { resolve } = global.nodemodule["path"];
     const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
